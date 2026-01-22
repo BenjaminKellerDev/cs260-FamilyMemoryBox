@@ -1,27 +1,36 @@
 # CS 260 Notes
 
-[My startup - Family Memories App](https://tbd)
+[My startup - Memory Box App](https://memorybox.click)
 
 ## Helpful links
 
 - [Course instruction](https://github.com/webprogramming260)
 - [Canvas](https://byu.instructure.com)
+- [super cool website that is better than canvas](https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e/topic/2680f434-f121-46bd-a858-5fb6d656a3df)
 - [MDN](https://developer.mozilla.org)
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 54.237.99.97
+It all worked without a hitch, until it crashed without me knowing and since it was over the weekend, I didn't notice and lost some bonus grace days. 
+Oh well, anyways it seems like it keeps running out of memory and killing random process. I'm not sure what's causing it because I did nothing to the OS image 
+except for edit the caddy config per the instructions. I set up Uptime Kuma on my home server to notify the minute (well within 3 mins) if it goes down
+so hopefully I won't loose any more points. 
 
 ## Caddy
 
 No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+I do want to figure out how to change that homepage to the correct links, probably just a quick job on the remote machine.
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
+Ok here's tha plan:
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+index.html - login auth
+stories.html - Application data (and Database data) (and WebSocket data)
+drafting.html - posting to database 
+tags.html - Database data
+
 
 ## CSS
 
