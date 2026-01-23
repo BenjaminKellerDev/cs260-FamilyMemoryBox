@@ -66,15 +66,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - added all planed pages
+- [x] **Proper HTML element usage** - checked structure with AI as demonstrated in class
 - [x] **Links** - every site is accessible from the home page, once logged in, via a nav bar
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [x] **Text** - added layout and placeholder text
+- [x] **3rd party API placeholder** - choose Art Institute of Chicago for API
+- [x] **Images** - added a wikimedia tree (represents a family tree) on the homepages, plus 3rd party API
 - [x] **Login placeholder** - you can login or create an account on the home page
-- [x] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - DB data on stories page and tag page.
+- [x] **WebSocket placeholder** - placeholder on stories page
 
 ## 🚀 CSS deliverable
 

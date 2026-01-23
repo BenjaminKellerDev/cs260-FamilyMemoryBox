@@ -1,4 +1,4 @@
-# Architecture Overview
+# AI HTML Architecture Overview
 
 This repository is a small static web project (class deliverable) that currently contains plain HTML pages, Markdown notes, and project documentation. It is a front-end prototype with several planned backend features described in the docs but not implemented in the workspace.
 
@@ -131,3 +131,65 @@ Suggested accessible form pattern:
 - Use semantic tags (`article`, `section`, `aside`, `time`) for story and comment content to improve SEO and assistive tech.
 
 These changes improve robustness, accessibility, and make it easier to later migrate to React/Vite and hook up APIs securely.
+
+## Additional HTML Structure Recommendations
+
+Below are concise, actionable HTML-focused suggestions you can apply across the existing static pages before adding CSS/JS.
+
+- **Document scaffold:** Always use a canonical document skeleton: `<!doctype html>`, `<html lang="en">`, a single `<head>` with metadata (`charset`, `viewport`, `title`, favicons, link to `styles.css`), and one `<body>`.
+- **Headings hierarchy:** Use a single `h1` per page for the main title, then descend (`h2` → `h3`) for sections; never skip levels (don't jump from `h1` to `h4`).
+- **Landmark elements:** Wrap top-level regions in `header`, `nav`, `main`, `aside`, and `footer` to enable screen-reader navigation. Use `role` only when semantic element is unavailable.
+- **Story/Feed markup:** Represent each story as an `article`. Put metadata in a `header` inside the `article` and the body in an element such as `div` or `section`. Use `time datetime="..."` for dates.
+
+	Example:
+
+	```html
+	<main>
+		<section aria-labelledby="feed-title">
+			<h2 id="feed-title">Recent Stories</h2>
+			<article class="story">
+				<header>
+					<h3 class="story-title">Grandma's Picnic</h3>
+					<p class="meta">By <a href="/profiles/amy">Amy</a> · <time datetime="2024-09-01">Sep 1, 2024</time></p>
+				</header>
+				<p>Short excerpt of the story…</p>
+				<footer class="story-actions"> <!-- buttons / links --> </footer>
+			</article>
+		</section>
+	</main>
+	```
+
+- **Navigation:** Use `nav` with a list (`ul > li > a`) for links. Include a visually hidden "Skip to main content" link at the top for keyboard users.
+- **Interactive controls:** Use `<button>` for actions (like open, close, like) and `<a>` for navigation. Buttons that trigger navigation should either be links or use progressive enhancement to perform client-side navigation.
+- **Forms & labels:** Always associate `label` with inputs via `for`/`id`. Use `fieldset` + `legend` for grouped controls. Provide `aria-invalid`, `aria-describedby` for error messaging, and an `aria-live="polite"` region for status updates.
+
+- **Images & media:** Provide meaningful `alt` text. For decorative images use empty `alt=""` and `role="presentation"`. Use `<figure>` and `<figcaption>` for images that need captions or attribution.
+- **Icons & SVG:** Inline SVG should include `<title>` and `<desc>` for accessibility; if using icon fonts, provide accessible labels or `aria-hidden="true"` when purely decorative.
+
+- **Semantic lists:** Use `ul`/`ol` for lists of links or items (e.g., tag lists, comment lists). Each comment can be an `li` containing an `article` or `section` with appropriate metadata.
+- **Avoid misuse of tables:** Only use `<table>` for tabular data; do not use tables for layout.
+
+- **Template fragments for JS:** Add `<template id="story-template">` that contains the HTML for a story item. This makes future client-side rendering easier while keeping the HTML valid now.
+
+	Example template:
+
+	```html
+	<template id="story-template">
+		<article class="story">
+			<header>
+				<h3 class="story-title"></h3>
+				<p class="meta"><time></time></p>
+			</header>
+			<p class="story-body"></p>
+		</article>
+	</template>
+	```
+
+- **Accessibility extras:** Add a `lang` attribute, include a visible focus style (in CSS later), and use ARIA only to complement missing semantics. Include `aria-live` regions for dynamic status messages.
+- **Microcopy & link semantics:** Use descriptive link text (avoid "click here"); external links should include `rel="noopener noreferrer"` and `target="_blank"` when needed.
+
+- **Naming conventions:** Use meaningful classes and IDs (avoid presentational names like `.red-heading`). Consider a simple atomic/BEM-like pattern for class names so later CSS is predictable.
+
+- **Validation & automation:** Add a simple HTML validation step to CI (e.g., `html-validate`) or run the W3C validator locally to catch structural errors (missing `lang`, duplicate `id`, stray `body` tags).
+
+These suggestions focus purely on HTML structure and semantics so the project is robust and accessible before CSS/JS are added.
