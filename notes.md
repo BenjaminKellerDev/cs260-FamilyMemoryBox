@@ -26,7 +26,7 @@ I do want to figure out how to change that homepage to the correct links, probab
 
 Ok here's tha plan:
 
-index.html - login auth
+index.html - login auth and 3rd party API
 stories.html - Application data (and Database data) (and WebSocket data)
 drafting.html - posting to database 
 tags.html - Database data
