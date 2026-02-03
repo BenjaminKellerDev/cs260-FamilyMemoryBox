@@ -38,6 +38,13 @@ h4 {
     margin: 20px;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 header,
 footer {
     display: flex;
@@ -51,4 +58,5 @@ header {
 
 footer {
     flex: 0 0 30px;
+    flex-grow: 1;
 }
