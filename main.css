@@ -16,6 +16,13 @@
     background-color: #fbf7f5;
 }
 
-h1 {
+h1,
+h1,
+h2,
+h3 {
     font-family: Calistoga;
+}
+
+.loginBox {
+    color: red;
 }
