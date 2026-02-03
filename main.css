@@ -26,4 +26,9 @@ h3 {
 #loginBox {
     border: solid #c4c3bf;
     border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
 }
