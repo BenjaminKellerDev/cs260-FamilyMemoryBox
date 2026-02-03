@@ -23,6 +23,7 @@ h3 {
     font-family: Calistoga;
 }
 
-.loginBox {
-    color: red;
+#loginBox {
+    border: solid #c4c3bf;
+    border-radius: 30px;
 }
