@@ -6,7 +6,16 @@
     light-gray: #c4c3bf
 
     inspired by: https://9artprints.com/cdn/shop/files/after-josef-albers-grove-homage-to-the-square-premium-giclee-print-mid-century-modern-art-print-in-green-white-available-framed-1x1-923422.jpg
-*/
+    and: https://waapple.org/
+    */
+
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+
 * {
+    font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #fbf7f5;
+}
+
+h1 {
+    font-family: Calistoga;
 }
