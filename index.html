@@ -15,11 +15,11 @@
 <body>
     <!-- no nav needed on this page -->
     <main>
-        <div id="centeringBox" class="px-4 py-3">
+        <div id="loginContainer">
             <h1>Welcome to your digital</h1>
             <h1> <i>Memory Box</i></h1>
             <!--<img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Birch_Tree_Drawing.jpg" width="200">-->
-            <form action="stories.html">
+            <form action="stories.html" class="loginChild">
                 <div>
                     <label for="nameBox" class="col-sm-2 col-form-label">Name:</label>
                     <input type="text" id="nameBox" name="loginName" class="form-control" />
@@ -37,11 +37,13 @@
                     <button type="submit" class="btn btn-secondary">Create</button>
                 </div>
             </form>
-            <h4>Inspirational art for your enjoyment:</h4>
-            <a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">
-                <img src="https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/1686,/0/default.jpg"
-                    alt="painting" width="400">
-            </a>
+            <div class="loginChild">
+                <h4>Inspirational art for your enjoyment:</h4>
+                <a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">
+                    <img src="https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/1686,/0/default.jpg"
+                        alt="painting" width="400">
+                </a>
+            </div>
         </div>
     </main>
 

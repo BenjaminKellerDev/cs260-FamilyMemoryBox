@@ -14,6 +14,7 @@
 * {
     font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #fbf7f5;
+    box-sizing: border-box;
 }
 
 h1,
@@ -24,12 +25,16 @@ h4 {
     font-family: Calistoga;
 }
 
-#centeringBox {
+#loginContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 90vh;
+    margin: 20px;
+}
+
+.loginChild {
     margin: 20px;
 }
 
