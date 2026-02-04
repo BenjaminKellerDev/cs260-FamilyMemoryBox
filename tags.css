@@ -28,3 +28,7 @@ button {
 .tag:hover {
     background-color: orange;
 }
+
+.tag:hover>span {
+    background-color: orange;
+}
