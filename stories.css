@@ -1,6 +1,8 @@
 main {
+    display: flex;
     flex: 1;
     overflow: auto;
+    height: 100%;
 
     max-width: 70vw;
     margin-left: auto;
@@ -9,6 +11,33 @@ main {
 
 body {
     background-color: #fbf7f5;
+}
+
+.buttonContainer {
+    display: flex;
+    padding: 10px 0px 0px;
+    justify-content: space-between;
+    text-align: center;
+}
+
+hr {
+    margin: 16px 16px;
+}
+
+.newPostBtn {
+    visibility: hidden;
+    animation-name: popIn;
+    animation-duration: 300ms;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+
+
+}
+
+@keyframes popIn {
+    to {
+        visibility: visible;
+    }
 }
 
 @media (max-width: 600px) {
