@@ -98,6 +98,10 @@ header * {
     color: #d5d5d5;
 }
 
+.headerLink:hover {
+    color: #fbf7f5;
+}
+
 
 #usernameHeader,
 #usernameHeader * {
