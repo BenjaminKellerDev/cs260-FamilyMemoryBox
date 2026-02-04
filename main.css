@@ -71,6 +71,11 @@ input {
     accent-color: orange;
 }
 
+.inputBox {
+    margin: 5px;
+    ;
+}
+
 header,
 footer {
     min-height: 50px;
