@@ -80,12 +80,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [x] **Use of a imported font** - Calistoga for titles, Georgia for text
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - I think the off white is quite nice, see notes.md for more inspirations sources
+- [x] **Use of a CSS framework** - bootstrap for form elements on nearly all pages
+- [ ] **All visual elements styled using CSS** - I don't think I missed anything
+- [x] **Responsive to window resizing using flexbox and/or grid display** - had a lot of trouble, pushed through it and noted my method in notes.md
+- [x] **Use of a imported font** - Calistoga for titles, Georgia for the rest of the text
+- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - locations of the all are: all except pseudo are on index.html, tags.html has the pseudo 
 
 ## 🚀 React part 1: Routing deliverable
 
