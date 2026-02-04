@@ -35,7 +35,7 @@ tags.html - Database data
 ## CSS
 
 I used https://waapple.org/ as inspiration for the font choice and found a similar free font on google fonts.
-I was originally inspired by the colors of Josef Albers Homage to the Square [(the green one specify)](https://9artprints.com/cdn/shop/files/after-josef-albers-grove-homage-to-the-square-premium-giclee-print-mid-century-modern-art-print-in-green-white-available-framed-1x1-923422.jpg?v=1764295174&width=3000) but those colors may be too strong.
+I was originally inspired by the colors of Josef Albers Homage to the Square [(the green one specify)](https://9artprints.com/cdn/shop/files/after-josef-albers-grove-homage-to-the-square-premium-giclee-print-mid-century-modern-art-print-in-green-white-available-framed-1x1-923422.jpg?v=1764295174&width=3000) but those colors were too strong so I went with a nice orange instead.
 
 Bootstrap was bothering me for a long time until I realized that the lower stylesheet takes precedence
 ```
@@ -52,6 +52,8 @@ max-width gave me trouble too, and im not entirely sure why this fixed it, but i
     margin-left: auto;
     margin-right: auto;
 ```
+
+finally, i added a little animation on the story feed if you wait 5 seconds to simulate websocket tech
 
 ## React Part 1: Routing
 
