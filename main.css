@@ -106,3 +106,10 @@ header a {
         display: none;
     }
 }
+
+@media (max-width: 360px) {
+    .ultraCompactHidable {
+        display: none;
+    }
+
+}
