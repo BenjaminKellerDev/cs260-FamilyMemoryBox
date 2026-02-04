@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="/tags.css" />
 
 </head>
 
@@ -27,19 +28,23 @@
 
     <main>
         <form>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" />
-            <fieldset>
-                <legend>Select Tags</legend>
-                <span>
+            <label for="title">
+                <h2>Title:</h2>
+            </label>
+            <input type="text" id="title" name="title" class="shrink form-control" />
+            <fieldset id="tagContainer">
+                <legend>
+                    <h4>Select Tags:</h4>
+                </legend>
+                <span class="tag">
                     <label for="tag1">Grandma</label>
                     <input type="checkbox" id="tag1" name="Grandma" value="Grandma">
                 </span>
-                <span>
+                <span class="tag">
                     <label for="tag1">Europe</label>
                     <input type="checkbox" id="tag2" name="Europe" value="Europe">
                 </span>
-                <span>
+                <span class="tag">
                     <label for="tag1">Family-Friend Frank</label>
                     <input type="checkbox" id="tag3" name="Family-Friend Frank" value="Family-Friend Frank">
                 </span>
