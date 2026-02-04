@@ -47,7 +47,10 @@ hr {
 }
 
 .tagContainer {
-    margin: 10px 0px 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 5px;
 }
 
 .story {
