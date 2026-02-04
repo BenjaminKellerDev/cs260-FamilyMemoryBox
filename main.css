@@ -72,3 +72,7 @@ footer p,
 footer a {
     margin: 1vh;
 }
+
+footer a {
+    color: #212529
+}

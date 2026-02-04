@@ -7,8 +7,16 @@ section {
     margin: 2vh;
 }
 
+button {
+    margin: 10px;
+}
+
 .tag {
     border: solid orange;
     border-radius: 20px;
     padding: 10px;
+}
+
+.tag:hover {
+    background-color: orange;
 }
