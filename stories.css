@@ -36,6 +36,10 @@ hr {
     display: inline;
 }
 
+.outOfFocus {
+    opacity: 0.8;
+}
+
 .tag {
     border: solid orange;
     border-radius: 20px;
