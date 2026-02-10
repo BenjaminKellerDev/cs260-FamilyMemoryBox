@@ -129,6 +129,10 @@ header a {
     margin: 10px;
 }
 
+.img {
+    width: auto;
+}
+
 @media(max-width: 460px) {
     #usernameText {
         display: none;
