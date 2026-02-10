@@ -15,7 +15,7 @@ export default function App() {
                     <NavLink to="/stories" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink>
                     <NavLink to="/tags" className="headerLink"><span className="ultraCompactHidable">Manage
                     </span>Tags</NavLink>
-                    <NavLink to="/login" className="headerLink">Logout</NavLink>
+                    <NavLink to="/" className="headerLink">Logout</NavLink>
                 </nav>
                 <div id="usernameHeader">
                     <span id="usernameText">Logged in as:</span> <span id="usernameTag">username</span>
