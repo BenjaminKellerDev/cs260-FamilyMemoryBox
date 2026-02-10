@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 export default function App() {
-    return <div className="body bg-dark text-light">
+    return <div className="body">
         <header>
             <nav>
                 <a href="/stories.html" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</a>
