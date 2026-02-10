@@ -121,6 +121,14 @@ header a {
     text-decoration: none;
 }
 
+.padding10px {
+    padding: 10px;
+}
+
+.margin10px {
+    margin: 10px;
+}
+
 @media(max-width: 460px) {
     #usernameText {
         display: none;
