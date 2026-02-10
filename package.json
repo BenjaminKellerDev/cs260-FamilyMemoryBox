@@ -1,0 +1,24 @@
+{
+  "name": "familymemoriesapp",
+  "version": "1.0.0",
+  "description": "Memory Box is a web-app for collecting, organizing and presenting family memories in a fashion suitable for all ages. Initial version was built for my university web development class and features a text-only approach, hopefully i'll have time to extend this into a full self-hosted app with more types of media and timeline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjaminKellerDev/cs260-FamilyMemoryBox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BenjaminKellerDev/cs260-FamilyMemoryBox/issues"
+  },
+  "homepage": "https://github.com/BenjaminKellerDev/cs260-FamilyMemoryBox#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
