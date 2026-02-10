@@ -7,7 +7,7 @@ export function Login() {
                 <h1>Welcome to your digital</h1>
                 <h1> <i>Memory Box</i></h1>
 
-                <form action="stories.html">
+                <form action="stories">
                     <div className="inputBox">
                         <label for="nameBox" className="form-label">Name:</label>
                         <input type="text" id="nameBox" name="loginName" className="shrink form-control" />

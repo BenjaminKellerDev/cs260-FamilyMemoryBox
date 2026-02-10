@@ -5,7 +5,7 @@ export function Stories() {
     return (
         <main>
             <div className="buttonContainer">
-                <form action="drafting.html">
+                <form action="drafting">
                     <button type="submit" className="btn btn-secondary">New Story</button>
                 </form>
                 <button className="newPostBtn btn btn-primary">New Posts! refresh now</button>

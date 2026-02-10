@@ -3,7 +3,7 @@ import React from 'react';
 export function Drafting() {
     return (
         <main>
-            <form action="stories.html">
+            <form action="stories">
                 <label for="title">
                     <h2>Title:</h2>
                 </label>

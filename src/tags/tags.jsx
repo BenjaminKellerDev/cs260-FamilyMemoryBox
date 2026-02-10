@@ -11,7 +11,7 @@ export function Tags() {
                         Frank ❌</span>
                 </div>
             </section>
-            <form action="tags.html">
+            <form action="tags">
                 <input type="text" id="tagBox" name="newTag" className="shrink form-control" placeholder="Tag Name" />
                 <button type="submit" className="btn btn-secondary">Add Tag</button>
             </form>
