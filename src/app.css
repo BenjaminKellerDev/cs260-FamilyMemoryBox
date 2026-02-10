@@ -25,7 +25,7 @@ h4 {
     font-family: Calistoga;
 }
 
-body {
+.body {
     display: flex;
     flex-direction: column;
 
