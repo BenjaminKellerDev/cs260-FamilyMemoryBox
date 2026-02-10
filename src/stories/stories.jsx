@@ -1,4 +1,5 @@
 import React from 'react';
+import './stories.css';
 
 export function Stories() {
     return (
