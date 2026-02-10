@@ -11,10 +11,10 @@ export default function App() {
     return <div className="body">
         <header>
             <nav>
-                <a href="/stories.html" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</a>
-                <a href="/tags.html" className="headerLink"><span className="ultraCompactHidable">Manage
-                </span>Tags</a>
-                <a href="/index.html" className="headerLink">Logout</a>
+                <NavLink to="/stories.html" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink >
+                <NavLink to="/tags.html" className="headerLink"><span className="ultraCompactHidable">Manage
+                </span>Tags</NavLink >
+                <NavLink to="/index.html" className="headerLink">Logout</NavLink >
             </nav>
             <div id="usernameHeader">
                 <span id="usernameText">Logged in as:</span> <span id="usernameTag">username</span>
