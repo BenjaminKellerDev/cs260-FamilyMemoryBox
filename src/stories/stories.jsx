@@ -13,9 +13,9 @@ export function Stories() {
             {/*  <!-- story 1--> */}
             <div className="story">
                 <hr></hr>
-                <h2 style="text-align: center;">That one time I went to that one place</h2>
-                <h5 style="text-align: center;">By Grandma</h5>
-                <p className="tagContainer"><span style="padding: 10px 0px 10px 5px;"><i>Tags: </i></span><span
+                <h2 className="text-aline-center">That one time I went to that one place</h2>
+                <h5 className="text-aline-center">By Grandma</h5>
+                <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span><span
                     className="tag">Grandma</span> <span className="tag">Europe</span> <span className="tag">Family-Friend
                         Frank</span>
                 </p>
@@ -84,9 +84,9 @@ export function Stories() {
             {/*  <!-- story 2--> */}
             <div className="story">
                 <hr></hr>
-                <h2 style="text-align: center;">The time I went to that one place, again!!</h2>
-                <h5 style="text-align: center;">By Grandma</h5>
-                <p className="tagContainer"><span style="padding: 10px 0px 10px 5px;"><i>Tags: </i></span><span
+                <h2 className="text-aline-center">The time I went to that one place, again!!</h2>
+                <h5 className="text-aline-center">By Grandma</h5>
+                <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span><span
                     className="tag">Grandma</span>
                     <span className="tag">Europe</span>
                 </p>

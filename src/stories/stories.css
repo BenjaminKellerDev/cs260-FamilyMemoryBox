@@ -13,6 +13,14 @@ body {
     background-color: #fbf7f5;
 }
 
+.text-aline-center {
+    text-align: center;
+}
+
+.tagTitleSpacing {
+    padding: 10px 0px 10px 5px;
+}
+
 .buttonContainer {
     display: flex;
     padding: 10px 0px 0px;
