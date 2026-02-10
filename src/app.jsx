@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Play } from './drafting/drafting';
-import { Scores } from './stories/stories';
-import { About } from './tags/tags';
+import { Drafting } from './drafting/drafting';
+import { Stories } from './stories/stories';
+import { Tags } from './tags/tags';
 
 export default function App() {
     return <div className="body">

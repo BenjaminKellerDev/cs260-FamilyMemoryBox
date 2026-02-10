@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function drafting() {
+export function Drafting() {
     return (
         <main className="container-fluid bg-secondary text-center">
             <div>login displayed here</div>
