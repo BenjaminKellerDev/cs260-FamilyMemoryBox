@@ -21,8 +21,8 @@ export function Login() {
                         <input type="password" id="passwordBox" name="loginPassword" className="shrink form-control" />
                     </div>
                     <div>
-                        <button type="submit" className="btn btn-primary" style="margin: 10px;">Login</button>
-                        <button type="submit" className="btn btn-secondary" style="margin: 10px;">Create</button>
+                        <button type="submit" className="margin10px btn btn-primary">Login</button>
+                        <button type="submit" className="margin10px btn btn-secondary">Create</button>
                     </div>
                 </form>
             </div>
