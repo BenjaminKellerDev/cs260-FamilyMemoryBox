@@ -4,7 +4,9 @@
   "description": "Memory Box is a web-app for collecting, organizing and presenting family memories in a fashion suitable for all ages. Initial version was built for my university web development class and features a text-only approach, hopefully i'll have time to extend this into a full self-hosted app with more types of media and timeline.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
