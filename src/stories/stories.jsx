@@ -74,7 +74,7 @@ export function Stories() {
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
-                            <input type="text" id="addComment" name="addComment" className="shrink form-control"></input>
+                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control"></input>
                             <button type="submit" className="btn btn-secondary">Post</button>
                         </form>
                     </div>
@@ -133,7 +133,7 @@ export function Stories() {
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
-                            <input type="text" id="addComment" name="addComment" className="shrink form-control"></input>
+                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control"></input>
                             <button type="submit" className="btn btn-secondary">Post</button>
                         </form>
                     </div>

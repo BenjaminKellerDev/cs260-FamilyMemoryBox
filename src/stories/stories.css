@@ -41,7 +41,7 @@ hr {
 }
 
 .comment-form-control {
-    display: inline;
+    display: inline !important;
 }
 
 .outOfFocus {
