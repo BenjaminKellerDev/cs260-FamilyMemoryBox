@@ -8,7 +8,7 @@ export function Drafting() {
                 <label for="title">
                     <h2>Title:</h2>
                 </label>
-                <input type="text" id="title" name="title" className="shrink form-control" />
+                <input type="text" id="title" name="title" className="shrink text-form-control form-control" />
                 <fieldset id="tagContainer">
                     <legend>
                         <h4 className="padding10px">Select Tags:</h4>
@@ -30,7 +30,7 @@ export function Drafting() {
                     <h4 className="padding10px">Story:</h4>
                 </label>
                 <br></br>
-                <textarea className="form-control" id="storyBox" name="storyBox"></textarea>
+                <textarea className="text-form-control form-control" id="storyBox" name="storyBox"></textarea>
                 <br></br>
                 <button type="submit" className="btn btn-secondary">Upload</button>
             </form>

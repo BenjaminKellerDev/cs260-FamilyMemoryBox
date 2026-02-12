@@ -59,6 +59,8 @@ finally, i added a little animation on the story feed if you wait 5 seconds to s
 
 Vite and React was pretty simple. unclosed html tags like no </input> caused errors and inline css didn't work so i converted it to css classes as i originally should have done. There are differences visually probably due to conflicting css but I kinda like it better. The one place I noticed this was the comment section had a bigger margin. The other place was the padding on the tags, which i did go and fix because it was too cramped. I found a good solution to hide the header on the login page but im going to wait to use it until I understand reactivity better in pt 2 https://stackoverflow.com/questions/71444637/react-router-hide-nav-footer-on-certain-pages-with-router-v6
 
+update: i think form-control got updated with bootstrap so i had to use !important because I realized react makes all css global. anyways text works now
+
 ## React Part 2: Reactivity
 
 This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
