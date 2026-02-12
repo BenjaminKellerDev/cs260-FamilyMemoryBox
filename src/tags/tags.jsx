@@ -12,7 +12,7 @@ export function Tags() {
                 </div>
             </section>
             <form action="tags">
-                <input type="text" id="tagBox" name="newTag" className="shrink form-control" placeholder="Tag Name" />
+                <input type="text" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" />
                 <button type="submit" className="btn btn-secondary">Add Tag</button>
             </form>
         </main>

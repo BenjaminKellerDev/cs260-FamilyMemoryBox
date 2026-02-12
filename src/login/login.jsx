@@ -9,16 +9,16 @@ export function Login() {
 
                 <form action="stories">
                     <div className="inputBox">
-                        <label for="nameBox" className="form-label">Name:</label>
-                        <input type="text" id="nameBox" name="loginName" className="shrink form-control" />
+                        <label htmlFor="nameBox" className="form-label">Name:</label>
+                        <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" />
                     </div>
                     <div className="inputBox">
-                        <label for="emailBox" className="form-label">Email:</label>
-                        <input type="email" id="emailBox" name="loginEmail" className="shrink form-control" />
+                        <label htmlFor="emailBox" className="form-label">Email:</label>
+                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" />
                     </div>
                     <div className="inputBox">
-                        <label for="passwordBox" className="form-label">Password:</label>
-                        <input type="password" id="passwordBox" name="loginPassword" className="shrink form-control" />
+                        <label htmlFor="passwordBox" className="form-label">Password:</label>
+                        <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" />
                     </div>
                     <div>
                         <button type="submit" className="margin10px btn btn-primary">Login</button>
