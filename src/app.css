@@ -121,6 +121,10 @@ header a {
     text-decoration: none;
 }
 
+.padding3px {
+    padding: 3px;
+}
+
 .padding10px {
     padding: 10px;
 }
