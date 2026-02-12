@@ -91,9 +91,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - Vite now compiles jsx for live viewing and deployment 
+- [x] **Components** - all pages are now components including 404
+- [x] **Router** - pages are now components that get dynamically loaded into app.jsx
 
 ## 🚀 React part 2: Reactivity deliverable
 
