@@ -20,7 +20,7 @@ export function Tags() {
                 <h1>Current Tags:</h1>
                 <div id="tagContainer">
                     <span className="tag">Grandma ❌</span> <span className="tag">Europe ❌</span> <span className="tag">Family-Friend
-                        Frank ❌</span><Tag name={'test'} />
+                        Frank ❌</span><Tag name={'test'} /> {tags.map((name, index) => <span key={index} className="tag">{name} ❌</span>)}
                 </div>
             </section>
             <form action="tags">
