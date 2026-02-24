@@ -2,6 +2,17 @@ import React from 'react';
 
 export function Login() {
 
+    function loginUser() {
+        localStorage.setItem('currentUser', nameText);
+    }
+
+    function createUser() {
+        var userArrayString = localStorage.getItem('userList') || '{"users":[]}';
+        var userArray = JSON.parse(userArrayString);
+        userArray.users.push({ nameText, emailText, passwordText });
+        localStorage.setItem('userList', JSON.stringify(userArray));
+    }
+
     const [nameText, setNameText] = React.useState('');
     function nameTextChange(e) {
         setNameText(e.target.value);
@@ -21,7 +32,6 @@ export function Login() {
             <div id="loginBox">
                 <h1>Welcome to your digital</h1>
                 <h1> <i>Memory Box</i></h1>
-                {passwordText}
                 <form action="stories">
                     <div className="inputBox">
                         <label htmlFor="nameBox" className="form-label" >Name:</label>
@@ -36,8 +46,8 @@ export function Login() {
                         <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" onChange={passwordTextChange} />
                     </div>
                     <div>
-                        <button type="submit" className="margin10px btn btn-primary">Login</button>
-                        <button type="submit" className="margin10px btn btn-secondary">Create</button>
+                        <button type="submit" className="margin10px btn btn-primary" onClick={loginUser}>Login</button>
+                        <button type="submit" className="margin10px btn btn-secondary" onClick={createUser}>Create</button>
                     </div>
                 </form>
             </div>
