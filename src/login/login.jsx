@@ -17,23 +17,19 @@ export function Login({ setCurrentUser }) {
         e.preventDefault();
         var userArrayString = localStorage.getItem('userList') || '{"users":[]}';
         var userArray = JSON.parse(userArrayString);
-        userArray.users.push({ nameText, emailText, passwordText });
+        userArray.users.push({ nameText, passwordText });
         localStorage.setItem('userList', JSON.stringify(userArray));
         navigate('/stories');
     }
 
     function checkUser() {
+
         return false;
     }
 
     const [nameText, setNameText] = React.useState('');
     function nameTextChange(e) {
         setNameText(e.target.value);
-    }
-
-    const [emailText, setEmailText] = React.useState('');
-    function emailTextChange(e) {
-        setEmailText(e.target.value);
     }
 
     const [passwordText, setPasswordText] = React.useState('');
@@ -49,10 +45,6 @@ export function Login({ setCurrentUser }) {
                     <div className="inputBox">
                         <label htmlFor="nameBox" className="form-label" >Name:</label>
                         <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" onChange={nameTextChange} />
-                    </div>
-                    <div className="inputBox">
-                        <label htmlFor="emailBox" className="form-label">Email:</label>
-                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" onChange={emailTextChange} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="passwordBox" className="form-label">Password:</label>
