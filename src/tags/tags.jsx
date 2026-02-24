@@ -2,6 +2,8 @@ import React from 'react';
 import './tags.css';
 
 export function Tags() {
+
+    //use effect to automatically call tags database here
     const [tags, setTags] = React.useState(['Grandma', 'Europe', 'Family-Friend Frank']);
 
     const [tagInput, setTagInput] = React.useState('');
@@ -9,9 +11,14 @@ export function Tags() {
         e.preventDefault();
         if (tagInput.length != 0) {
             setTags([...tags, tagInput]);
-            setTagInput('');
-            console.log(tags);
+            setTagInput("");
         }
+    }
+
+    function removeTag(e) {
+        setTags(tags.filter(tags => tags != e.target.firstChild.data))
+        //console.log(e.target.firstChild.data);
+        //  console.log(tags);
     }
 
     return (
@@ -23,13 +30,14 @@ export function Tags() {
                 </div>
             </section>
             <form action="tags">
-                <input type="text" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" onChange={e => setTagInput(e.target.value)} />
+                <input type="text" autoComplete="off" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" onChange={e => setTagInput(e.target.value)} />
                 <button type="submit" className="btn btn-secondary" onClick={addTag}>Add Tag</button>
             </form>
         </main>
     );
+
+    function Tag({ name }) {
+        return <span className="tag" onClick={removeTag}>{name} ❌</span>
+    }
 }
 
-function Tag({ key, name }) {
-    return <span key={key} className="tag">{name} ❌</span>
-}
