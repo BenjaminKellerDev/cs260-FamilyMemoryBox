@@ -16,6 +16,12 @@ export default function App() {
         localStorage.removeItem('currentUser');
         navigate('/');
     }
+
+    React.useEffect(() => {
+        if (currentUser == null) {
+            navigate('/');
+        }
+    }, [location.pathname])
     return <div className="body">
         {currentUser &&
             <header>
