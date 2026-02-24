@@ -2,7 +2,7 @@ import React from 'react';
 import './tags.css';
 
 export function Tags() {
-    const [tags, setTags] = React.useState([]);
+    const [tags, setTags] = React.useState(['Grandma', 'Europe', 'Family-Friend Frank']);
 
     const [tagInput, setTagInput] = React.useState('');
     function addTag(e) {
@@ -20,7 +20,7 @@ export function Tags() {
                 <h1>Current Tags:</h1>
                 <div id="tagContainer">
                     <span className="tag">Grandma ❌</span> <span className="tag">Europe ❌</span> <span className="tag">Family-Friend
-                        Frank ❌</span><Tag />
+                        Frank ❌</span><Tag name={'test'} />
                 </div>
             </section>
             <form action="tags">
@@ -31,6 +31,6 @@ export function Tags() {
     );
 }
 
-function Tag() {
-    return <span className="tag">tag2 ❌</span>
+function Tag({ name }) {
+    return <span className="tag">{name} ❌</span>
 }
