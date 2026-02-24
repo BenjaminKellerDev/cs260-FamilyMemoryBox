@@ -15,15 +15,28 @@ export function Login({ setCurrentUser }) {
 
     function createUser(e) {
         e.preventDefault();
+
+        //add to localStorage
         var userArrayString = localStorage.getItem('userList') || '{"users":[]}';
         var userArray = JSON.parse(userArrayString);
         userArray.users.push({ nameText, passwordText });
         localStorage.setItem('userList', JSON.stringify(userArray));
-        navigate('/stories');
+
+        loginUser(e);
     }
 
     function checkUser() {
-
+        var userArray = JSON.parse(localStorage.getItem('userList') || '{"users":[]}');
+        console.log(userArray);
+        return userArray.users.some((element) => element.nameText == nameText && element.passwordText == passwordText);
+        userArray.users.forEach(element => {
+            console.log(element.nameText, nameText, element.passwordText, passwordText);
+            if (element.nameText == nameText &&
+                element.passwordText == passwordText
+            ) {
+                return true;
+            }
+        });
         return false;
     }
 
