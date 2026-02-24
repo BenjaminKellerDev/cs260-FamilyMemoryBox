@@ -19,8 +19,7 @@ export function Tags() {
             <section>
                 <h1>Current Tags:</h1>
                 <div id="tagContainer">
-                    <span className="tag">Grandma ❌</span> <span className="tag">Europe ❌</span> <span className="tag">Family-Friend
-                        Frank ❌</span><Tag name={'test'} /> {tags.map((name, index) => <span key={index} className="tag">{name} ❌</span>)}
+                    {tags.map((name, index) => <Tag key={index} name={name} />)}
                 </div>
             </section>
             <form action="tags">
@@ -31,6 +30,6 @@ export function Tags() {
     );
 }
 
-function Tag({ name }) {
-    return <span className="tag">{name} ❌</span>
+function Tag({ key, name }) {
+    return <span key={key} className="tag">{name} ❌</span>
 }
