@@ -47,7 +47,7 @@ export function Login({ setCurrentUser }) {
                         <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" onChange={passwordTextChange} />
                     </div>
                     <div>
-                        <button type="submit" className="margin10px btn btn-primary" onClick={loginUser} method="post">Login</button>
+                        <button type="submit" className="margin10px btn btn-primary" onClick={loginUser}>Login</button>
                         <button type="submit" className="margin10px btn btn-secondary" onClick={createUser}>Create</button>
                     </div>
                 </form>

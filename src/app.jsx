@@ -16,37 +16,35 @@ export default function App() {
         localStorage.removeItem('currentUser');
         navigate('/');
     }
-    return <BrowserRouter>
-        <div className="body">
-            {currentUser &&
-                <header>
-                    <nav>
-                        <NavLink to="/stories" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink>
-                        <NavLink to="/tags" className="headerLink"><span className="ultraCompactHidable">Manage
-                        </span>Tags</NavLink>
-                        <NavLink to="/" className="headerLink" onClick={logoutUser}>Logout</NavLink>
-                    </nav>
-                    <div id="usernameHeader">
-                        <span id="usernameText">Logged in as:</span> <span id="usernameTag">{currentUser}</span>
-                    </div>
-                </header>
-            }
-            <Routes>
-                <Route path='/' element={<Login setCurrentUser={setCurrentUser} />} exact />
-                <Route path='/drafting' element={<Drafting />} />
-                <Route path='/stories' element={<Stories />} />
-                <Route path='/tags' element={<Tags />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
+    return <div className="body">
+        {currentUser &&
+            <header>
+                <nav>
+                    <NavLink to="/stories" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink>
+                    <NavLink to="/tags" className="headerLink"><span className="ultraCompactHidable">Manage
+                    </span>Tags</NavLink>
+                    <NavLink to="/" className="headerLink" onClick={logoutUser}>Logout</NavLink>
+                </nav>
+                <div id="usernameHeader">
+                    <span id="usernameText">Logged in as:</span> <span id="usernameTag">{currentUser}</span>
+                </div>
+            </header>
+        }
+        <Routes>
+            <Route path='/' element={<Login setCurrentUser={setCurrentUser} />} exact />
+            <Route path='/drafting' element={<Drafting />} />
+            <Route path='/stories' element={<Stories />} />
+            <Route path='/tags' element={<Tags />} />
+            <Route path='*' element={<NotFound />} />
+        </Routes>
 
 
-            <footer>
-                <p>by Benjamin Keller</p>
-                <a href=" https://github.com/BenjaminKellerDev/cs260-FamilyMemoryBox">Source</a>
-            </footer>
+        <footer>
+            <p>by Benjamin Keller</p>
+            <a href=" https://github.com/BenjaminKellerDev/cs260-FamilyMemoryBox">Source</a>
+        </footer>
 
-        </div>
-    </BrowserRouter >;
+    </div>;
 }
 
 function NotFound() {
