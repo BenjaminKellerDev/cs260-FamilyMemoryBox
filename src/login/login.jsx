@@ -1,17 +1,29 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Login({ setCurrentUser }) {
+    const navigate = useNavigate();
 
-    function loginUser() {
-        localStorage.setItem('currentUser', nameText);
-        setCurrentUser(nameText);
+    function loginUser(e) {
+        e.preventDefault();
+        if (checkUser()) {
+            localStorage.setItem('currentUser', nameText);
+            setCurrentUser(nameText);
+            navigate('/stories');
+        }
     }
 
-    function createUser() {
+    function createUser(e) {
+        e.preventDefault();
         var userArrayString = localStorage.getItem('userList') || '{"users":[]}';
         var userArray = JSON.parse(userArrayString);
         userArray.users.push({ nameText, emailText, passwordText });
         localStorage.setItem('userList', JSON.stringify(userArray));
+        navigate('/stories');
+    }
+
+    function checkUser() {
+        return false;
     }
 
     const [nameText, setNameText] = React.useState('');
