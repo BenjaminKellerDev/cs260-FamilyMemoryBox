@@ -1,6 +1,18 @@
 import React from 'react';
 
 export function Login() {
+
+    function nameText(e) {
+
+    }
+
+    function emailText(e) {
+
+    }
+
+    function passwordText(e) {
+
+    }
     return (
         <main>
             <div id="loginBox">
@@ -9,16 +21,16 @@ export function Login() {
 
                 <form action="stories">
                     <div className="inputBox">
-                        <label htmlFor="nameBox" className="form-label">Name:</label>
-                        <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" />
+                        <label htmlFor="nameBox" className="form-label" >Name:</label>
+                        <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" onChange={nameText} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="emailBox" className="form-label">Email:</label>
-                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" />
+                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" onChange={emailText} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="passwordBox" className="form-label">Password:</label>
-                        <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" />
+                        <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" onChange={passwordText} />
                     </div>
                     <div>
                         <button type="submit" className="margin10px btn btn-primary">Login</button>
