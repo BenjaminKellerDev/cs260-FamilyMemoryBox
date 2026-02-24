@@ -17,8 +17,6 @@ export function Tags() {
 
     function removeTag(e) {
         setTags(tags.filter(tags => tags != e.target.firstChild.data))
-        //console.log(e.target.firstChild.data);
-        //  console.log(tags);
     }
 
     return (
@@ -30,7 +28,7 @@ export function Tags() {
                 </div>
             </section>
             <form action="tags">
-                <input type="text" autoComplete="off" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" onChange={e => setTagInput(e.target.value)} />
+                <input type="text" autoComplete="off" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" onChange={e => setTagInput(e.target.value)} value={tagInput} />
                 <button type="submit" className="btn btn-secondary" onClick={addTag}>Add Tag</button>
             </form>
         </main>
