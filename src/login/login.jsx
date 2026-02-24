@@ -24,14 +24,25 @@ export function Login({ setCurrentUser }) {
         //add to localStorage
         var userArrayString = localStorage.getItem('userList') || '{"users":[]}';
         var userArray = JSON.parse(userArrayString);
-        userArray.users.push({ nameText, passwordText });
-        localStorage.setItem('userList', JSON.stringify(userArray));
 
-        loginUser(e);
+        if (passwordText.length === 0) {
+            setErrorMSG('no password set');
+        }
+        else if (!userArray.users.some((element) => element.nameText == nameText)) {
+            userArray.users.push({ nameText, passwordText });
+            localStorage.setItem('userList', JSON.stringify(userArray));
+
+            loginUser(e);
+        }
+        else {
+            setErrorMSG('name already exists');
+        }
     }
 
     function checkUser() {
         var userArray = JSON.parse(localStorage.getItem('userList') || '{"users":[]}');
+        if (nameText.length === 0 || passwordText.length === 0)
+            return false;
         return userArray.users.some((element) => element.nameText == nameText && element.passwordText == passwordText);
     }
 
