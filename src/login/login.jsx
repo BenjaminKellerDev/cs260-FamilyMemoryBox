@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './login.css';
 
 export function Login({ setCurrentUser }) {
     const navigate = useNavigate();
+    const [errorMSG, setErrorMSG] = React.useState('');
 
     function loginUser(e) {
         e.preventDefault();
@@ -10,6 +12,9 @@ export function Login({ setCurrentUser }) {
             localStorage.setItem('currentUser', nameText);
             setCurrentUser(nameText);
             navigate('/stories');
+        }
+        else {
+            setErrorMSG('invalid credentials');
         }
     }
 
@@ -27,17 +32,7 @@ export function Login({ setCurrentUser }) {
 
     function checkUser() {
         var userArray = JSON.parse(localStorage.getItem('userList') || '{"users":[]}');
-        console.log(userArray);
         return userArray.users.some((element) => element.nameText == nameText && element.passwordText == passwordText);
-        userArray.users.forEach(element => {
-            console.log(element.nameText, nameText, element.passwordText, passwordText);
-            if (element.nameText == nameText &&
-                element.passwordText == passwordText
-            ) {
-                return true;
-            }
-        });
-        return false;
     }
 
     const [nameText, setNameText] = React.useState('');
@@ -67,6 +62,7 @@ export function Login({ setCurrentUser }) {
                         <button type="submit" className="margin10px btn btn-primary" onClick={loginUser}>Login</button>
                         <button type="submit" className="margin10px btn btn-secondary" onClick={createUser}>Create</button>
                     </div>
+                    <div className='errorMSG'> {errorMSG}</div>
                 </form>
             </div>
             <div id="artBox">
