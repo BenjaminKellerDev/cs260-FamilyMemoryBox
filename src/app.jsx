@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Drafting } from './drafting/drafting';
 import { Stories } from './stories/stories';
@@ -9,10 +9,12 @@ import { Tags } from './tags/tags';
 
 export default function App() {
     const [currentUser, setCurrentUser] = React.useState(localStorage.getItem('currentUser') || null);
+    const navigate = useNavigate();
 
     function logoutUser() {
         setCurrentUser(null);
         localStorage.removeItem('currentUser');
+        navigate('/');
     }
     return <BrowserRouter>
         <div className="body">
