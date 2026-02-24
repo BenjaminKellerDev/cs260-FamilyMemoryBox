@@ -2,35 +2,38 @@ import React from 'react';
 
 export function Login() {
 
-    function nameText(e) {
-
+    const [nameText, setNameText] = React.useState('');
+    function nameTextChange(e) {
+        setNameText(e.target.value);
     }
 
-    function emailText(e) {
-
+    const [emailText, setEmailText] = React.useState('');
+    function emailTextChange(e) {
+        setEmailText(e.target.value);
     }
 
-    function passwordText(e) {
-
+    const [passwordText, setPasswordText] = React.useState('');
+    function passwordTextChange(e) {
+        setPasswordText(e.target.value);
     }
     return (
         <main>
             <div id="loginBox">
                 <h1>Welcome to your digital</h1>
                 <h1> <i>Memory Box</i></h1>
-
+                {passwordText}
                 <form action="stories">
                     <div className="inputBox">
                         <label htmlFor="nameBox" className="form-label" >Name:</label>
-                        <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" onChange={nameText} />
+                        <input type="text" id="nameBox" name="loginName" className="shrink text-form-control form-control" onChange={nameTextChange} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="emailBox" className="form-label">Email:</label>
-                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" onChange={emailText} />
+                        <input type="email" id="emailBox" name="loginEmail" className="shrink text-form-control form-control" onChange={emailTextChange} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="passwordBox" className="form-label">Password:</label>
-                        <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" onChange={passwordText} />
+                        <input type="password" id="passwordBox" name="loginPassword" className="shrink text-form-control form-control" onChange={passwordTextChange} />
                     </div>
                     <div>
                         <button type="submit" className="margin10px btn btn-primary">Login</button>
