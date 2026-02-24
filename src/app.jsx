@@ -8,22 +8,29 @@ import { Stories } from './stories/stories';
 import { Tags } from './tags/tags';
 
 export default function App() {
+    const [currentUser, setCurrentUser] = React.useState(localStorage.getItem('currentUser') || null);
+
+    function logoutUser() {
+        setCurrentUser(null);
+        localStorage.removeItem('currentUser');
+    }
     return <BrowserRouter>
         <div className="body">
-            <header>
-                <nav>
-                    <NavLink to="/stories" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink>
-                    <NavLink to="/tags" className="headerLink"><span className="ultraCompactHidable">Manage
-                    </span>Tags</NavLink>
-                    <NavLink to="/" className="headerLink">Logout</NavLink>
-                </nav>
-                <div id="usernameHeader">
-                    <span id="usernameText">Logged in as:</span> <span id="usernameTag">username</span>
-                </div>
-            </header>
-
+            {currentUser &&
+                <header>
+                    <nav>
+                        <NavLink to="/stories" className="headerLink"><span className="ultraCompactHidable">Story </span>Feed</NavLink>
+                        <NavLink to="/tags" className="headerLink"><span className="ultraCompactHidable">Manage
+                        </span>Tags</NavLink>
+                        <NavLink to="/" className="headerLink" onClick={logoutUser}>Logout</NavLink>
+                    </nav>
+                    <div id="usernameHeader">
+                        <span id="usernameText">Logged in as:</span> <span id="usernameTag">{currentUser}</span>
+                    </div>
+                </header>
+            }
             <Routes>
-                <Route path='/' element={<Login />} exact />
+                <Route path='/' element={<Login setCurrentUser={setCurrentUser} />} exact />
                 <Route path='/drafting' element={<Drafting />} />
                 <Route path='/stories' element={<Stories />} />
                 <Route path='/tags' element={<Tags />} />

@@ -1,9 +1,10 @@
 import React from 'react';
 
-export function Login() {
+export function Login({ setCurrentUser }) {
 
     function loginUser() {
         localStorage.setItem('currentUser', nameText);
+        setCurrentUser(nameText);
     }
 
     function createUser() {
