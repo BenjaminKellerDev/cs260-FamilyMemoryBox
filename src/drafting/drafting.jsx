@@ -17,10 +17,11 @@ export function Drafting() {
     function toggleTag(e) {
         const tagText = e.target.name;
         if (storyTags.includes(tagText)) {
-            setStoryTags(storyTags.filter(t => t != tagText));
+            setStoryTags(storyTags.filter(t => t !== tagText));
         } else {
             setStoryTags([...storyTags, tagText]);
         }
+        console.log(e);
     }
 
     function uploadStory(e) {
@@ -60,7 +61,7 @@ export function Drafting() {
     function Tag({ name }) {
         return <label className="tag">
             <span htmlFor="tag1" className="padding3px">{name}</span>
-            <input type="checkbox" onClick={toggleTag} name={name}/* id="tag3" name="Family-Friend Frank" value="Family-Friend Frank" */></input>
+            <input type="checkbox" onChange={toggleTag} checked={storyTags.includes(name)} name={name}/* id="tag3" name="Family-Friend Frank" value="Family-Friend Frank" */></input>
         </label>
     }
 }
