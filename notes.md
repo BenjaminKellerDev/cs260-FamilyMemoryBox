@@ -63,26 +63,16 @@ update: i think form-control got updated with bootstrap so i had to use !importa
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
+I didn't really understand the react philosophy until i started working on the project. It still feels a little unwieldy, for example the username field needs a useState, input handlers, button handlers and to pass the state up. 
 
-Handling the toggling of the checkboxes was particularly interesting.
+After I moved onto the tags I realized that abstracting parts of the service to separate js files (like database.js) would be a better strategy along with some inline arrow (lambda?) functions. If I have time I'll go back and refactor login, or ill just have to refactor it in the next phase.
 
+I'm still learning about useEffect. I tried to prevent weird back button behavior where you could go to a page without being logged in. However, the best i could come up with resulted in weirder infinite loop back button behavior.
 ```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
+    React.useEffect(() => {
+        if (currentUser == null) {
+            navigate('/');
+        }
+    }, [location.pathname]) 
 ```
+I think that when I add real authentication, the issue may go away. I'm not sure how I can set myself up for implementing it better, but ill see by the end of the phase.
