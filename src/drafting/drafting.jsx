@@ -4,6 +4,12 @@ import '../tags/tags.css';
 import { getTagsFromDatabase, getStoriesFromDB, addNewStoryToDB } from '../database'
 
 export function Drafting() {
+    React.useEffect(() => {
+        setTags(getTagsFromDatabase())
+    }, []);
+
+    const [tags, setTags] = React.useState([]);
+
     return (
         <main>
             <form action="stories">
@@ -15,18 +21,7 @@ export function Drafting() {
                     <legend>
                         <h4 className="padding10px">Select Tags:</h4>
                     </legend>
-                    <label className="tag">
-                        <span htmlFor="tag1" className="padding3px">Grandma</span>
-                        <input type="checkbox" id="tag1" name="Grandma" value="Grandma"></input>
-                    </label>
-                    <label className="tag">
-                        <span htmlFor="tag1" className="padding3px">Europe</span>
-                        <input type="checkbox" id="tag2" name="Europe" value="Europe"></input>
-                    </label>
-                    <label className="tag">
-                        <span htmlFor="tag1" className="padding3px">Family-Friend Frank</span>
-                        <input type="checkbox" id="tag3" name="Family-Friend Frank" value="Family-Friend Frank"></input>
-                    </label>
+                    {tags.map((name, index) => <Tag key={index} name={name} />)}
                 </fieldset>
                 <label htmlFor="storyBox">
                     <h4 className="padding10px">Story:</h4>
@@ -38,4 +33,11 @@ export function Drafting() {
             </form>
         </main>
     );
+
+    function Tag({ name }) {
+        return <label className="tag">
+            <span htmlFor="tag1" className="padding3px">{name}</span>
+            <input type="checkbox" id="tag3" name="Family-Friend Frank" value="Family-Friend Frank"></input>
+        </label>
+    }
 }
