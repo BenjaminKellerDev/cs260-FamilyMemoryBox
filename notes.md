@@ -75,4 +75,8 @@ I'm still learning about useEffect. I tried to prevent weird back button behavio
         }
     }, [location.pathname]) 
 ```
-I think that when I add real authentication, the issue may go away. I'm not sure how I can set myself up for implementing it better, but ill see by the end of the phase.
+I think that when I add real authentication, the issue may go away. I'm not sure how I can set myself up for implementing it better, but i'll see by the end of the phase.
+
+It's been quite fun to turn html blocks into jsx functions and watch them get dynamically added, I'm starting to see the power of javascript!
+
+I learned more about the react DOM relationship when adding a useState function to the checkboxes on the drafting page caused the checkboxes to stop working. It turns out React was re-rending the checkbox a few millisecond after the function was called causing it's state to go back to default. I had to add this to the attributes in order for React to update the DOM ```checked={storyTags.includes(name)}``` In the discord Prof. Jensen recommend to another student to keep the form elements for accessability purposes. So perhaps a good practice might be always using ```e.preventDefault()``` in order to keep React in control and reduce side effects(is this the right term?). Anyways, exciting stuff!s
