@@ -25,7 +25,11 @@ export function Tags() {
     }
 
     function removeTag(e) {
-        setTags(tags.filter(tags => tags != e.target.firstChild.data))
+        setTags(oldTags => {
+            const newTags = tags.filter(tags => tags != e.target.firstChild.data)
+            setTagsToDatabase(newTags);
+            return newTags;
+        })
     }
 
     return (

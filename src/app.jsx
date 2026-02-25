@@ -17,12 +17,6 @@ export default function App() {
         navigate('/');
     }
 
-    /* prevent weird back button behavior with weirder back button behavior
-    React.useEffect(() => {
-        if (currentUser == null) {
-            navigate('/');
-        }
-    }, [location.pathname]) */
     return <div className="body">
         {currentUser &&
             <header>
