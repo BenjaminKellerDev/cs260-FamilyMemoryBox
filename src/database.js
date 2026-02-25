@@ -9,10 +9,12 @@ export function setTagsToDatabase(tags) {
 }
 
 export function getStoriesFromDB() {
+    console.log(JSON.parse(localStorage.getItem('Stories')) || []);
     return JSON.parse(localStorage.getItem('Stories')) || [];
 }
 
 export function addNewStoryToDB(storyObj) {
+    console.log(storyObj);
     const storyList = JSON.parse(localStorage.getItem('Stories') || '[]')
     localStorage.setItem('Stories', JSON.stringify([...storyList, storyObj]));
 }

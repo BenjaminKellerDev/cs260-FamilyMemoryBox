@@ -1,9 +1,11 @@
 import React from 'react';
 import '../tags/tags.css';
+import { useNavigate } from 'react-router-dom';
 
 import { getTagsFromDatabase, getStoriesFromDB, addNewStoryToDB } from '../database'
 
 export function Drafting() {
+    const navigate = useNavigate();
 
     const [tags, setTags] = React.useState([]);
     React.useEffect(() => {
@@ -21,17 +23,18 @@ export function Drafting() {
         } else {
             setStoryTags([...storyTags, tagText]);
         }
-        console.log(e);
     }
 
     function uploadStory(e) {
         e.preventDefault();
-        let StoryOBJ = new Object();
-        StoryOBJ.title = title;
-        StoryOBJ.storyTags = storyTags;
-        StoryOBJ.story = story;
-
-        console.log(StoryOBJ.storyTags);
+        if (title.length !== 0 && story.length !== 0) {
+            let storyOBJ = new Object();
+            storyOBJ.title = title;
+            storyOBJ.storyTags = storyTags;
+            storyOBJ.story = story;
+            addNewStoryToDB(storyOBJ);
+            navigate('/stories');
+        }
     }
 
     return (
