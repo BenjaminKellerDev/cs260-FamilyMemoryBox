@@ -1,6 +1,8 @@
 import React from 'react';
 import '../tags/tags.css';
 
+import { getTagsFromDatabase, getStoriesFromDB, addNewStoryToDB } from '../database'
+
 export function Drafting() {
     return (
         <main>
