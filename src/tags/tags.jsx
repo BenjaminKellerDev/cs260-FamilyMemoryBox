@@ -1,17 +1,26 @@
 import React from 'react';
 import './tags.css';
 
+import { getTagsFromDatabase, setTagsToDatabase } from '../database'
+
 export function Tags() {
 
-    //use effect to automatically call tags database here
-    const [tags, setTags] = React.useState(['Grandma', 'Europe', 'Family-Friend Frank']);
+    React.useEffect(() => {
+        setTags(getTagsFromDatabase())
+    }, []);
+
+    const [tags, setTags] = React.useState([]);
 
     const [tagInput, setTagInput] = React.useState('');
     function addTag(e) {
         e.preventDefault();
-        if (tagInput.length != 0) {
-            setTags([...tags, tagInput]);
-            setTagInput("");
+        if (tagInput.length != 0 && !tags.includes(tagInput)) {
+            setTags(oldTags => {
+                const newTags = [...oldTags, tagInput]
+                setTagsToDatabase(newTags);
+                setTagInput("");
+                return newTags;
+            })
         }
     }
 
