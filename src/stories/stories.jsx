@@ -1,5 +1,8 @@
 import React from 'react';
 import './stories.css';
+import { useNavigate } from 'react-router-dom';
+
+import { getStoriesFromDB } from '../database'
 
 export function Stories() {
     return (

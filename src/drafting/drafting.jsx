@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { getTagsFromDatabase, getStoriesFromDB, addNewStoryToDB } from '../database'
 
-export function Drafting() {
+export function Drafting({ currentUser }) {
     const navigate = useNavigate();
 
     const [tags, setTags] = React.useState([]);
@@ -30,6 +30,7 @@ export function Drafting() {
         if (title.length !== 0 && story.length !== 0) {
             let storyOBJ = new Object();
             storyOBJ.title = title;
+            storyOBJ.author = currentUser;
             storyOBJ.storyTags = storyTags;
             storyOBJ.story = story;
             addNewStoryToDB(storyOBJ);

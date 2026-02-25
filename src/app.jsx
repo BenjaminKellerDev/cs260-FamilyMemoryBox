@@ -33,7 +33,7 @@ export default function App() {
         }
         <Routes>
             <Route path='/' element={<Login setCurrentUser={setCurrentUser} />} exact />
-            <Route path='/drafting' element={<Drafting />} />
+            <Route path='/drafting' element={<Drafting currentUser={currentUser} />} />
             <Route path='/stories' element={<Stories />} />
             <Route path='/tags' element={<Tags />} />
             <Route path='*' element={<NotFound />} />
