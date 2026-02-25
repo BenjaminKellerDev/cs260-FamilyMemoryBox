@@ -6,6 +6,12 @@ import { getStoriesFromDB } from '../database'
 
 export function Stories() {
     const navigate = useNavigate();
+
+    const [stories, setStories] = React.useState([]);
+    React.useEffect(() => {
+        setStories(getStoriesFromDB());
+    }, []);
+
     return (
         <main>
             <div className="buttonContainer">
@@ -15,7 +21,7 @@ export function Stories() {
                 <button className="newPostBtn btn btn-primary">New Posts! refresh now</button>
             </div>
             <div>no content</div>
-
+            {stories.map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
         </main>
     );
