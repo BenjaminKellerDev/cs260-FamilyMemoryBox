@@ -23,6 +23,16 @@ export function Drafting() {
         }
     }
 
+    function uploadStory(e) {
+        e.preventDefault();
+        let StoryOBJ = new Object();
+        StoryOBJ.title = title;
+        StoryOBJ.storyTags = storyTags;
+        StoryOBJ.story = story;
+
+        console.log(StoryOBJ.storyTags);
+    }
+
     return (
         <main>
             <form action="stories">
@@ -42,7 +52,7 @@ export function Drafting() {
                 <br></br>
                 <textarea className="text-form-control form-control" id="storyBox" name="storyBox" onChange={(e) => setStory(e.target.value)}></textarea>
                 <br></br>
-                <button type="submit" className="btn btn-secondary">Upload</button>
+                <button type="submit" className="btn btn-secondary" onClick={uploadStory}>Upload</button>
             </form>
         </main>
     );
