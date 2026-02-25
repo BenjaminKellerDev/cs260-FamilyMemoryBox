@@ -31,9 +31,8 @@ export function Stories() {
                 <hr></hr>
                 <h2 className="text-aline-center">{storyOBJ.title}</h2>
                 <h5 className="text-aline-center">By {storyOBJ.author}</h5>
-                <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span><span
-                    className="tag">Grandma</span> <span className="tag">Europe</span> <span className="tag">Family-Friend
-                        Frank</span>
+                <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span>
+                    {storyOBJ.storyTags.map((name, index) => <Tag key={index} name={name} />)}
                 </p>
                 <p className="leftElement">{storyOBJ.story} </p>
                 <hr></hr>
