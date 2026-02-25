@@ -31,6 +31,7 @@ export function Drafting({ currentUser }) {
             let storyOBJ = new Object();
             storyOBJ.title = title;
             storyOBJ.author = currentUser;
+            storyOBJ.postTime = Math.floor(Date.now() / 1000);
             storyOBJ.storyTags = storyTags;
             storyOBJ.story = story;
             addNewStoryToDB(storyOBJ);

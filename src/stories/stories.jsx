@@ -20,8 +20,7 @@ export function Stories() {
                 </form>
                 <button className="newPostBtn btn btn-primary">New Posts! refresh now</button>
             </div>
-            <div>no content</div>
-            {stories.map((obj, index) => <Story key={index} storyOBJ={obj} />)}
+            {stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
         </main>
     );

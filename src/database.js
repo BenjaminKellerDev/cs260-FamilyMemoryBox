@@ -14,7 +14,6 @@ export function getStoriesFromDB() {
 }
 
 export function addNewStoryToDB(storyObj) {
-    console.log(storyObj);
     const storyList = JSON.parse(localStorage.getItem('Stories') || defaultStory)
     localStorage.setItem('Stories', JSON.stringify([...storyList, storyObj]));
 }
