@@ -28,12 +28,7 @@ export function Stories({ currentUser }) {
     function Story({ storyOBJ }) {
         const [comments, setComments] = React.useState(storyOBJ.comments);
 
-        const [commentInput, setCommentInput] = React.useState('');
-        function addComment(e) {
-            e.preventDefault();
-            addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
-            setComments([...comments, { author: currentUser, text: commentInput }]);
-        }
+
         return (
             <div className="story">
                 <hr></hr>
@@ -50,7 +45,12 @@ export function Stories({ currentUser }) {
         );
 
         function CommentSection({ comments }) {
-
+            const [commentInput, setCommentInput] = React.useState();
+            function addComment(e) {
+                e.preventDefault();
+                addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
+                setComments([...comments, { author: currentUser, text: commentInput }]);
+            }
             return (
                 <section className="outOfFocus">
                     <h3>Comments</h3>

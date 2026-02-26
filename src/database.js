@@ -35,9 +35,6 @@ export function addNewStoryToDB(storyObj) {
 
 export function addCommentToStory(storyObj, commentObj) {
     const storyList = JSON.parse(localStorage.getItem('Stories')) || defaultStory;
-    console.log(storyList);
-    console.log(storyObj);
-    console.log(commentObj);
     storyList.find(story => JSON.stringify(story) === JSON.stringify(storyObj)).comments.push(commentObj);
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }
