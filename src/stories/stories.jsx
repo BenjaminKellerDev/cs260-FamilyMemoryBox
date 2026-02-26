@@ -59,11 +59,14 @@ export function Stories({ currentUser }) {
         );
 
         function CommentSection({ comments }) {
-            const [commentInput, setCommentInput] = React.useState();
+            const [commentInput, setCommentInput] = React.useState('');
             function addComment(e) {
                 e.preventDefault();
-                addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
-                setComments([...comments, { author: currentUser, text: commentInput }]);
+                if (commentInput.length > 0) {
+                    addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
+                    setComments([...comments, { author: currentUser, text: commentInput }]);
+                    setCommentInput('');
+                }
             }
             return (
                 <section className="outOfFocus">
@@ -72,7 +75,7 @@ export function Stories({ currentUser }) {
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
-                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control" onChange={(e) => setCommentInput(e.target.value)}></input>
+                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control" onChange={(e) => setCommentInput(e.target.value)} value={commentInput}></input>
                             <button type="submit" className="btn btn-secondary" onClick={addComment}>Post</button>
                         </form>
                     </div>

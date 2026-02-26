@@ -35,11 +35,38 @@ export function addNewStoryToDB(storyObj) {
 
 export function addCommentToStory(storyObj, commentObj) {
     const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    storyList.find(story => JSON.stringify(story) === JSON.stringify(storyObj)).comments.push(commentObj);
+    storyList.find(story => story.postTime === storyObj.postTime).comments.push(commentObj);
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }
 
 export function addRandomStoryToDB() {
+    const titles = [
+        "Guys, I just heard this from Frank.",
+        "Okay, so apparently Frank told me this.",
+        "Don’t quote me, but Frank mentioned something wild.",
+        "I just got this from Frank.",
+        "So I heard from Frank that this is true.",
+        "Word is, Frank confirmed it.",
+        "I just talked to Frank about this.",
+        "This came straight from Frank.",
+        "I heard through Frank that this happened.",
+        "Frank literally just told me this.",
+        "Frank just pulled me aside and said this.",
+        "I wasn’t supposed to say anything, but Frank told me.",
+        "This is straight from Frank’s mouth.",
+        "Frank swears this is legit.",
+        "Frank mentioned this earlier.",
+        "I got this directly from Frank.",
+        "Frank hinted at this happening.",
+        "Frank brought this up yesterday.",
+        "Frank says this is confirmed.",
+        "Frank told me not to spread this, but...",
+        "Apparently Frank was there when it happened.",
+        "Frank insists this is real.",
+        "Frank let this slip earlier.",
+        "Frank said this off the record.",
+        "This came up in a convo with Frank."
+    ];
     const chuckNorrisJokes = [
         "Chuck Norris can take a screenshot of his blue screen.",
         "Chuck Norris writes code that optimizes itself.",
@@ -64,9 +91,9 @@ export function addRandomStoryToDB() {
     ];
 
     let newStory = {
-        title: "Guys, I just heard this from Frank",
+        title: titles[Math.floor(Math.random() * titles.length)],
         author: "Grandma",
-        postTime: 0,
+        postTime: Math.floor(Date.now() / 1000),
         storyTags: ["Family-Friend Frank"],
         story: chuckNorrisJokes[Math.floor(Math.random() * chuckNorrisJokes.length)],
         comments: [
@@ -76,8 +103,12 @@ export function addRandomStoryToDB() {
             }
         ]
     }
-    console.log(peoples[Math.floor(Math.random() * peoples.length)]);
-    console.log(newStory);
+
+    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
+    while (storyList.find(story => story.title === newStory.title)) {
+        newStory.title = titles[Math.floor(Math.random() * titles.length)];
+    }
+
     addNewStoryToDB(newStory);
 
 }
