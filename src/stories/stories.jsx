@@ -2,7 +2,7 @@ import React from 'react';
 import './stories.css';
 import { useNavigate } from 'react-router-dom';
 
-import { getStoriesFromDB, addCommentToStory } from '../database'
+import { getStoriesFromDB, addCommentToStory, addRandomStoryToDB } from '../database'
 
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
@@ -12,13 +12,27 @@ export function Stories({ currentUser }) {
         setStories(getStoriesFromDB());
     }, []);
 
+    //websocket
+    const [newStoriesNotification, setNSN] = React.useState(false);
+    React.useEffect(() => {
+        setInterval(() => {
+            setNSN(true);
+        }, 3000);
+    }, [])
+
+    function refreshPosts() {
+        addRandomStoryToDB();
+        setStories(getStoriesFromDB());
+        setNSN(false);
+    }
+
     return (
         <main>
             <div className="buttonContainer">
                 <form action="drafting">
                     <button type="submit" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('../drafting'); }}>New Story</button>
                 </form>
-                <button className="btn btn-primary">New Posts! refresh now</button>
+                {newStoriesNotification && <button className="btn btn-primary" onClick={refreshPosts}>New Posts! refresh now</button>}
             </div>
             {stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
