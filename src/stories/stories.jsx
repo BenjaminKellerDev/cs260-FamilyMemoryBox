@@ -26,6 +26,7 @@ export function Stories() {
     );
 
     function Story({ storyOBJ }) {
+        const [comments, setComments] = React.useState(storyOBJ.comments);
         return (
             <div className="story">
                 <hr></hr>
@@ -38,18 +39,7 @@ export function Stories() {
                 <hr></hr>
                 <section className="outOfFocus">
                     <h3>Comments</h3>
-                    <div>
-                        <div>
-                            <i>Dad:</i>
-                            <p>I remember that!!</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <i>Grandson:</i>
-                            <p>Wow! So cool! Is that where the turboencabulator you have in the garage came from?</p>
-                        </div>
-                    </div>
+                    {comments && comments.map((index, commentObj) => <Comment key={index} commentObj={commentObj} />)}
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
@@ -61,6 +51,16 @@ export function Stories() {
             </div>
 
         );
+        function Comment({ commentObj }) {
+            return (
+                <div>
+                    <div>
+                        <i>{commentObj.author}:</i>
+                        <p>{commentObj.text}</p>
+                    </div>
+                </div>
+            );
+        }
 
         function Tag({ name }) {
             return (<span className="tag">{name}</span>);
