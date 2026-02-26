@@ -57,7 +57,7 @@ export function Login({ setCurrentUser }) {
         setPasswordText(e.target.value);
     }
 
-    const [imageOBJ, setImage] = React.useState(new Object());
+    const [imageOBJ, setImage] = React.useState(null);
     React.useEffect(() => {
         //getImageFromAPI().then(setImage);
         setImage(getImageFromAPI());
@@ -86,11 +86,11 @@ export function Login({ setCurrentUser }) {
             </div>
             <div id="artBox">
                 <h4>Inspirational art for your enjoyment:</h4>
-                <a href={imageOBJ.href}>
-                    <img src={imageOBJ.source}
+                {imageOBJ && < a href={imageOBJ.info}>
+                    <img src={imageOBJ.img}
                         alt={imageOBJ.imageName} className="img"></img>
-                </a>
+                </a>}
             </div>
-        </main>
+        </main >
     );
 }
