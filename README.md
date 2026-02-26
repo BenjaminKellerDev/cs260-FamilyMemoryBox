@@ -99,8 +99,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Everything works with localStorage. Tags update between the manage page and drafting page. Posting and commenting even work!
+- [x] **Hooks** - I used many states to retrieve input from text boxes and use effects to future-proof when I swap out database.js and imageAPI.js for the actual services.
 
 ## 🚀 Service deliverable
 
