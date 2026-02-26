@@ -32,13 +32,6 @@ hr {
     margin: 16px 16px;
 }
 
-.newPostBtn {
-    visibility: hidden;
-    animation-name: popIn;
-    animation-duration: 300ms;
-    animation-delay: 4s;
-    animation-fill-mode: forwards;
-}
 
 .comment-form-control {
     display: inline !important;

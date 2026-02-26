@@ -18,7 +18,7 @@ export function Stories({ currentUser }) {
                 <form action="drafting">
                     <button type="submit" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('../drafting'); }}>New Story</button>
                 </form>
-                <button className="newPostBtn btn btn-primary">New Posts! refresh now</button>
+                <button className="btn btn-primary">New Posts! refresh now</button>
             </div>
             {stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
