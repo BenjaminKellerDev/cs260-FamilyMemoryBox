@@ -12,8 +12,6 @@ export function Stories({ currentUser }) {
         setStories(getStoriesFromDB());
     }, []);
 
-    const getUniqueIndex = makeUniqueCounter();
-
     return (
         <main>
             <div className="buttonContainer">
@@ -22,7 +20,7 @@ export function Stories({ currentUser }) {
                 </form>
                 <button className="newPostBtn btn btn-primary">New Posts! refresh now</button>
             </div>
-            {stories.toReversed().map((obj, index) => <Story key={getUniqueIndex()} storyOBJ={obj} />)}
+            {stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
         </main>
     );
@@ -42,7 +40,7 @@ export function Stories({ currentUser }) {
                 <h2 className="text-aline-center">{storyOBJ.title}</h2>
                 <h5 className="text-aline-center">By {storyOBJ.author}</h5>
                 <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span>
-                    {storyOBJ.storyTags.map((name, index) => <Tag key={getUniqueIndex()} name={name} />)}
+                    {storyOBJ.storyTags.map((name, index) => <Tag key={index} name={name} />)}
                 </p>
                 <p className="leftElement">{storyOBJ.story} </p>
                 <hr></hr>
@@ -56,7 +54,7 @@ export function Stories({ currentUser }) {
             return (
                 <section className="outOfFocus">
                     <h3>Comments</h3>
-                    {comments && comments.map((index, commentObj) => <Comment key={getUniqueIndex()} commentObj={commentObj} />)}
+                    {comments && comments.map((commentObj, index) => <Comment key={index} commentObj={commentObj} />)}
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
@@ -82,14 +80,6 @@ export function Stories({ currentUser }) {
 
         function Tag({ name }) {
             return (<span className="tag">{name}</span>);
-        }
-    }
-
-    function makeUniqueCounter() {
-        let uIndex = 0;
-        return function () {
-            uIndex++;
-            return uIndex;
         }
     }
 }
