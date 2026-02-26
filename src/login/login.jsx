@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import { getImageFromAPI } from '../imageAPI'
 
 export function Login({ setCurrentUser }) {
     const navigate = useNavigate();
