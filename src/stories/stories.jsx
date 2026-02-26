@@ -2,9 +2,9 @@ import React from 'react';
 import './stories.css';
 import { useNavigate } from 'react-router-dom';
 
-import { getStoriesFromDB } from '../database'
+import { getStoriesFromDB, addCommentToStory } from '../database'
 
-export function Stories() {
+export function Stories({ currentUser }) {
     const navigate = useNavigate();
 
     const [stories, setStories] = React.useState([]);
@@ -27,6 +27,12 @@ export function Stories() {
 
     function Story({ storyOBJ }) {
         const [comments, setComments] = React.useState(storyOBJ.comments);
+
+        const [commentInput, setCommentInput] = React.useState('');
+        function addComment(e) {
+            e.preventDefault();
+            addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
+        }
         return (
             <div className="story">
                 <hr></hr>
@@ -43,8 +49,8 @@ export function Stories() {
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>
-                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control"></input>
-                            <button type="submit" className="btn btn-secondary">Post</button>
+                            <input type="text" id="addComment" name="addComment" className="shrink comment-form-control form-control" onChange={(e) => setCommentInput(e.target.value)}></input>
+                            <button type="submit" className="btn btn-secondary" onClick={addComment}>Post</button>
                         </form>
                     </div>
                 </section>

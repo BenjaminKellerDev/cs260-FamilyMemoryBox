@@ -34,6 +34,7 @@ export function Drafting({ currentUser }) {
             storyOBJ.postTime = Math.floor(Date.now() / 1000);
             storyOBJ.storyTags = storyTags;
             storyOBJ.story = story;
+            storyOBJ.comments = [];
             addNewStoryToDB(storyOBJ);
             navigate('/stories');
         }
