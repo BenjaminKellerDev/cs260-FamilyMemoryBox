@@ -56,6 +56,13 @@ export function Login({ setCurrentUser }) {
     function passwordTextChange(e) {
         setPasswordText(e.target.value);
     }
+
+    const [imageOBJ, setImage] = React.useState(new Object());
+    React.useEffect(() => {
+        //getImageFromAPI().then(setImage);
+        setImage(getImageFromAPI());
+    }, [])
+
     return (
         <main>
             <div id="loginBox">
@@ -79,9 +86,9 @@ export function Login({ setCurrentUser }) {
             </div>
             <div id="artBox">
                 <h4>Inspirational art for your enjoyment:</h4>
-                <a href=" https://www.artic.edu/artworks/20684/paris-street-rainy-day">
-                    <img src="https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/1686,/0/default.jpg"
-                        alt="painting" className="img"></img>
+                <a href={imageOBJ.href}>
+                    <img src={imageOBJ.source}
+                        alt={imageOBJ.imageName} className="img"></img>
                 </a>
             </div>
         </main>
