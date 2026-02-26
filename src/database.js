@@ -25,16 +25,16 @@ export function setTagsToDatabase(tags) {
 }
 
 export function getStoriesFromDB() {
-    return JSON.parse(localStorage.getItem('Stories')) || defaultStory;
+    return JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
 }
 
 export function addNewStoryToDB(storyObj) {
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || defaultStory;
+    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
     localStorage.setItem('Stories', JSON.stringify([...storyList, storyObj]));
 }
 
 export function addCommentToStory(storyObj, commentObj) {
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || defaultStory;
+    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
     storyList.find(story => JSON.stringify(story) === JSON.stringify(storyObj)).comments.push(commentObj);
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }

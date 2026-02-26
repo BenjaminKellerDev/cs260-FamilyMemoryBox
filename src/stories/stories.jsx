@@ -34,7 +34,7 @@ export function Stories({ currentUser }) {
                 </form>
                 {newStoriesNotification && <button className="btn btn-primary" onClick={refreshPosts}>New Posts! refresh now</button>}
             </div>
-            {stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
+            {stories && stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
 
         </main>
     );
