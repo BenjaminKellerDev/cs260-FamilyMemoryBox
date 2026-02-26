@@ -34,7 +34,7 @@ export function Stories({ currentUser }) {
                 </form>
                 {newStoriesNotification && <button className="btn btn-primary" onClick={refreshPosts}>New Posts! refresh now</button>}
             </div>
-            {stories && stories.toReversed().map((obj, index) => <Story key={index} storyOBJ={obj} />)}
+            {stories && stories.toReversed().map((obj) => <Story key={obj.uuid} storyOBJ={obj} />)}
 
         </main>
     );
@@ -49,7 +49,7 @@ export function Stories({ currentUser }) {
                 <h2 className="text-aline-center">{storyOBJ.title}</h2>
                 <h5 className="text-aline-center">By {storyOBJ.author}</h5>
                 <p className="tagContainer"><span className="tagTitleSpacing"><i>Tags: </i></span>
-                    {storyOBJ.storyTags.map((name, index) => <Tag key={index} name={name} />)}
+                    {storyOBJ.storyTags.map((name, index) => <Tag key={name} name={name} />)}
                 </p>
                 <p className="leftElement">{storyOBJ.story} </p>
                 <hr></hr>
@@ -63,15 +63,16 @@ export function Stories({ currentUser }) {
             function addComment(e) {
                 e.preventDefault();
                 if (commentInput.length > 0) {
-                    addCommentToStory(storyOBJ, { author: currentUser, text: commentInput });
-                    setComments([...comments, { author: currentUser, text: commentInput }]);
+                    const newComment = { author: currentUser, text: commentInput, uuid: crypto.randomUUID() }
+                    addCommentToStory(storyOBJ, newComment);
+                    setComments([...comments, newComment]);
                     setCommentInput('');
                 }
             }
             return (
                 <section className="outOfFocus">
                     <h3>Comments</h3>
-                    {comments && comments.map((commentObj, index) => <Comment key={index} commentObj={commentObj} />)}
+                    {comments && comments.map((commentObj) => <Comment key={commentObj.uuid} commentObj={commentObj} />)}
                     <div>
                         <form>
                             <label htmlFor="addComment">Add a comment:</label>

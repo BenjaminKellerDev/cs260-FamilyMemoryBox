@@ -32,6 +32,7 @@ export function Drafting({ currentUser }) {
             storyOBJ.title = title;
             storyOBJ.author = currentUser;
             storyOBJ.postTime = Math.floor(Date.now() / 1000);
+            storyOBJ.uuid = crypto.randomUUID();
             storyOBJ.storyTags = storyTags;
             storyOBJ.story = story;
             storyOBJ.comments = [];

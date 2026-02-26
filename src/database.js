@@ -4,15 +4,18 @@ const defaultStory = {
     title: "That one time I went to that one place",
     author: "Grandma",
     postTime: 1772074405,
+    uuid: crypto.randomUUID(),
     storyTags: ["Grandma", "Europe", "Family-Friend Frank"],
     story: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.",
     comments: [
         {
             author: "Dad",
-            text: "I remember that!!"
+            text: "I remember that!!",
+            uuid: crypto.randomUUID()
         }, {
             author: "Grandson",
-            text: "Wow! So cool! Is that where the turboencabulator you have in the garage came from?"
+            text: "Wow! So cool! Is that where the turboencabulator you have in the garage came from?",
+            uuid: crypto.randomUUID()
         }
     ]
 }
@@ -35,7 +38,7 @@ export function addNewStoryToDB(storyObj) {
 
 export function addCommentToStory(storyObj, commentObj) {
     const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    storyList.find(story => story.postTime === storyObj.postTime).comments.push(commentObj);
+    storyList.find(story => story.uuid === storyObj.uuid).comments.push(commentObj);
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }
 
@@ -94,12 +97,14 @@ export function addRandomStoryToDB() {
         title: titles[Math.floor(Math.random() * titles.length)],
         author: "Grandma",
         postTime: Math.floor(Date.now() / 1000),
+        uuid: crypto.randomUUID(),
         storyTags: ["Family-Friend Frank"],
         story: chuckNorrisJokes[Math.floor(Math.random() * chuckNorrisJokes.length)],
         comments: [
             {
                 author: peoples[Math.floor(Math.random() * peoples.length)],
-                text: "woah."
+                text: "woah.",
+                uuid: crypto.randomUUID()
             }
         ]
     }
