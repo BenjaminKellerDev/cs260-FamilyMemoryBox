@@ -2,7 +2,7 @@ import React from 'react';
 import './stories.css';
 import { useNavigate } from 'react-router-dom';
 
-import { getStoriesFromDB, addCommentToStory, addRandomStoryToDB } from '../database'
+import { getStoriesFromDB, addCommentToStory, updateStoryComments, addRandomStoryToDB } from '../database'
 
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
@@ -42,6 +42,7 @@ export function Stories({ currentUser }) {
     function Story({ storyOBJ }) {
         const [comments, setComments] = React.useState(storyOBJ.comments);
 
+        React.useEffect(() => { storyOBJ.comments = comments; updateStoryComments(storyOBJ) }, [comments]);
 
         return (
             <div className="story">
@@ -64,7 +65,7 @@ export function Stories({ currentUser }) {
                 e.preventDefault();
                 if (commentInput.length > 0) {
                     const newComment = { author: currentUser, text: commentInput, uuid: crypto.randomUUID() }
-                    addCommentToStory(storyOBJ, newComment);
+                    //addCommentToStory(storyOBJ, newComment);
                     setComments([...comments, newComment]);
                     setCommentInput('');
                 }

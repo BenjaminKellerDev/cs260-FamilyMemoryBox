@@ -42,6 +42,14 @@ export function addCommentToStory(storyObj, commentObj) {
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }
 
+export function updateStoryComments(storyObj) {
+    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
+    storyList.find(story => story.uuid === storyObj.uuid).comments = storyObj.comments;
+    console.log(storyObj);
+    console.log(storyList);
+    localStorage.setItem('Stories', JSON.stringify(storyList));
+}
+
 export function addRandomStoryToDB() {
     const titles = [
         "Guys, I just heard this from Frank.",
