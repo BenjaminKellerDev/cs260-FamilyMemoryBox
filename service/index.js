@@ -71,6 +71,15 @@ apiRouter.post('/auth/login', async (req, res) => {
     res.status(401).send({ msg: "unauthorized" });
 });
 
+apiRouter.delete('/auth/logout', async (req, res) => {
+    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
+    if (user) {
+        delete user.token;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+});
+
 async function findUserByAttribute(attribute, key) {
     if (!key) return null;
     return await users.find((u) => u[attribute] === key);
