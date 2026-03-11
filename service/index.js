@@ -40,13 +40,25 @@ function setAuthCookie(res, authToken) {
 }
 
 apiRouter.post('/auth/create', async (req, res) => {
-    user = findUserByAttribute('nameText', req.body.nameText)
-    if (user === null) {
+    if (await findUserByAttribute('nameText', req.body.nameText)) {
         res.status(409).send({ msg: 'name already taken' });
     } else {
-
+        const token = await createUser(req.body.nameText, req.body.passwordText);
+        setAuthCookie(res, token);
+        res.send({ nameText: nameText });
     }
 });
+
+async function createUser(nameText, passwordText) {
+    const passwordHash = await bcrypt.hash(passwordText, 10);
+    const user = {
+        nameText: nameText,
+        password: passwordHash,
+        token: uuid.v4()
+    };
+    users.push(user);
+    return user.token;
+}
 
 async function findUserByAttribute(attribute, key) {
     if (!key) return null;
