@@ -35,9 +35,7 @@ function setAuthCookie(res, authToken) {
         sameSite: 'strict',
     });
 }
-apiRouter.get('/test', async (req, res) => {
-    res.body = "hi"; res.send();
-})
+apiRouter.get('/test', async (req, res) => { res.body = "hi"; res.send(); })
 
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUserByAttribute('nameText', req.body.nameText)) {
@@ -45,7 +43,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     } else {
         const token = await createUser(req.body.nameText, req.body.passwordText);
         setAuthCookie(res, token);
-        res.send({ nameText: nameText });
+        res.send({ nameText: req.body.nameText });
     }
 });
 
