@@ -22,6 +22,7 @@ export function Login({ setCurrentUser }) {
     async function createUser(e) {
         e.preventDefault();
 
+        console.log('do you see me??');
         if (passwordText.length === 0) {
             setErrorMSG('no password set');
         }
@@ -34,11 +35,14 @@ export function Login({ setCurrentUser }) {
                 }
             })
             if (response?.status === 200) {
+                console.log(response);
                 loginUser(e);
             } else {
                 setErrorMSG(response.body.msg);
             }
         }
+
+
     }
 
     function checkUser() {
@@ -80,7 +84,7 @@ export function Login({ setCurrentUser }) {
                     </div>
                     <div>
                         <button type="submit" className="margin10px btn btn-primary" onClick={() => loginUser()}>Login</button>
-                        <button type="submit" className="margin10px btn btn-secondary" onClick={() => createUser()}>Create</button>
+                        <button type="submit" className="margin10px btn btn-secondary" onClick={createUser}>Create</button>
                     </div>
                     <div className='errorMSG'> {errorMSG}</div>
                 </form>
