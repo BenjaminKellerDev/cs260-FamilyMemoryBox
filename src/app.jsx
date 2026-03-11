@@ -20,7 +20,6 @@ export default function App() {
             setCurrentUser(null);
             navigate('/');
         })
-
     }
 
     return <div className="body">
