@@ -58,6 +58,19 @@ async function createUser(nameText, passwordText) {
     return user.token;
 }
 
+apiRouter.post('/auth/login', async (req, res) => {
+    const user = await findUserByAttribute('nameText', req.body.nameText);
+    if (user) {
+        if (await bcrypt.compare(req.body.passwordText, user.password)) {
+            user.token = uuid.v4();
+            setAuthCookie(res, user.token);
+            res.send({ nameText: req.body.nameText });
+            return;
+        }
+    }
+    res.status(401).send({ msg: "unauthorized" });
+});
+
 async function findUserByAttribute(attribute, key) {
     if (!key) return null;
     return await users.find((u) => u[attribute] === key);
