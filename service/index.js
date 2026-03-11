@@ -4,7 +4,12 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 
+const authCookieName = 'token';
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
+
+let tags = [];
+let stories = [];
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -21,4 +26,18 @@ app.use(`/api`, apiRouter);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
+});
+
+// setAuthCookie in the HTTP response
+function setAuthCookie(res, authToken) {
+    res.cookie(authCookieName, authToken, {
+        maxAge: 1000 * 60 * 60 * 24 * 365,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict',
+    });
+}
+
+apiRouter.post('/auth/create', async (req, res) => {
+
 });
