@@ -33,6 +33,11 @@ export function Login({ setCurrentUser }) {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             })
+            if (response?.status === 200) {
+                loginUser(e);
+            } else {
+                setErrorMSG(response.body.msg);
+            }
         }
     }
 
