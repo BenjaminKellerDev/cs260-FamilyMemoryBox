@@ -10,6 +10,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 let tags = [];
 let stories = [];
+let users = [];
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -39,5 +40,15 @@ function setAuthCookie(res, authToken) {
 }
 
 apiRouter.post('/auth/create', async (req, res) => {
+    user = findUserByAttribute('nameText', req.body.nameText)
+    if (user === null) {
+        res.status(409).send({ msg: 'name already taken' });
+    } else {
 
+    }
 });
+
+async function findUserByAttribute(attribute, key) {
+    if (!key) return null;
+    return await users.find((u) => u[attribute] === key);
+}
