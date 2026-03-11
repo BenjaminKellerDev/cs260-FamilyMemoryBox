@@ -34,8 +34,8 @@ export function Login({ setCurrentUser }) {
                 }
             })
             if (response?.status === 200) {
-                console.log(response);
-                loginUser(e);
+                setCurrentUser(nameText);
+                navigate('/stories');
             } else {
                 setErrorMSG(response.body.msg);
             }
@@ -43,7 +43,7 @@ export function Login({ setCurrentUser }) {
 
 
     }
-
+    //prob obsolete soon
     function checkUser() {
         var userArray = JSON.parse(localStorage.getItem('userList') || '{"users":[]}');
         if (nameText.length === 0 || passwordText.length === 0)
