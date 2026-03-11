@@ -22,7 +22,6 @@ export function Login({ setCurrentUser }) {
     async function createUser(e) {
         e.preventDefault();
 
-        console.log('do you see me??');
         if (passwordText.length === 0) {
             setErrorMSG('no password set');
         }

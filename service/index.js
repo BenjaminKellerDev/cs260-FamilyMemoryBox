@@ -25,9 +25,6 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-});
 
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
@@ -38,6 +35,9 @@ function setAuthCookie(res, authToken) {
         sameSite: 'strict',
     });
 }
+apiRouter.get('/test', async (req, res) => {
+    res.body = "hi"; res.send();
+})
 
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUserByAttribute('nameText', req.body.nameText)) {
@@ -64,3 +64,8 @@ async function findUserByAttribute(attribute, key) {
     if (!key) return null;
     return await users.find((u) => u[attribute] === key);
 }
+
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
