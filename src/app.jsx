@@ -12,9 +12,15 @@ export default function App() {
     const navigate = useNavigate();
 
     function logoutUser() {
-        setCurrentUser(null);
-        localStorage.removeItem('currentUser');
-        navigate('/');
+        fetch('/api/auth/logout', {
+            method: 'delete'
+        }).catch(() => {
+            //assume offline,do nothing so they can still logout later
+        }).finally(() => {
+            setCurrentUser(null);
+            navigate('/');
+        })
+
     }
 
     return <div className="body">
