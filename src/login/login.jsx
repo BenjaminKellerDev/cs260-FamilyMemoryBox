@@ -7,8 +7,19 @@ export function Login({ setCurrentUser }) {
     const navigate = useNavigate();
     const [errorMSG, setErrorMSG] = React.useState('');
 
-    function loginUser(e) {
+    async function loginUser(e) {
         e.preventDefault();
+        if (nameText.length === 0 || passwordText.length === 0) {
+            setErrorMSG('enter credentials please');
+            return;
+        }
+        const response = await fetch('/api/auth/login', {
+            method: 'post',
+            body: JSON.stringify({ nameText: nameText, passwordText: passwordText }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        });
         if (checkUser()) {
             localStorage.setItem('currentUser', nameText);
             setCurrentUser(nameText);
@@ -32,7 +43,7 @@ export function Login({ setCurrentUser }) {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 }
-            })
+            });
             if (response?.status === 200) {
                 setCurrentUser(nameText);
                 navigate('/stories');
@@ -42,13 +53,6 @@ export function Login({ setCurrentUser }) {
         }
 
 
-    }
-    //prob obsolete soon
-    function checkUser() {
-        var userArray = JSON.parse(localStorage.getItem('userList') || '{"users":[]}');
-        if (nameText.length === 0 || passwordText.length === 0)
-            return false;
-        return userArray.users.some((element) => element.nameText == nameText && element.passwordText == passwordText);
     }
 
     const [nameText, setNameText] = React.useState('');
