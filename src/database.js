@@ -24,11 +24,11 @@ export async function getTagsFromDatabase() {
 }
 
 export async function postTagToDatabase(tag) {
-    return await endpointHandler('/api/tags', 'post', tag);
+    return await endpointHandler('/api/tags', 'post', { newTag: tag });
 }
 
 export async function deleteTagFromDatabase(tag) {
-    return await endpointHandler('/api/tags', 'delete', tag);
+    return await endpointHandler('/api/tags', 'delete', { tagToRemove: tag });
 }
 
 export async function getStoriesFromDB() {
