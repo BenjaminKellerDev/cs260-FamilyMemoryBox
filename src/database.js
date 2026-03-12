@@ -20,12 +20,20 @@ const defaultStory = {
     ]
 }
 export async function getTagsFromDatabase() {
-    let tagArray = [];
     const response = await fetch('/api/tags', {
         method: 'get'
-    }).then((responce) => responce.json())
-        .then((responceJSON) => tagArray = responceJSON);
-    return tagArray;
+    });
+
+    if (!response.ok) {
+        throw new Error("network error");
+    }
+
+    const responceJSON = responce.json();
+
+    if ('msg' in responceJSON) {
+        throw new Error(responceJSON.msg);
+    }
+    return responceJSON;
 }
 
 export function setTagsToDatabase(tags) {

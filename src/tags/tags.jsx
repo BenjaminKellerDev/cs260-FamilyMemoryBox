@@ -8,9 +8,9 @@ export function Tags() {
 
 
     React.useEffect(() => {
-        (async () => {
-            setTags(await getTagsFromDatabase().catch(err => setErrorMSG(err)))
-        })();
+        getTagsFromDatabase()
+            .then(setTags)
+            .catch(err => setErrorMSG(err.message));
     }, []);
 
     const [tags, setTags] = React.useState([]);
