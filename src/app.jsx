@@ -18,6 +18,7 @@ export default function App() {
             //assume offline,do nothing so they can still logout later
         }).finally(() => {
             setCurrentUser(null);
+            localStorage.removeItem('currentUser');
             navigate('/');
         })
     }

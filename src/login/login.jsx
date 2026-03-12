@@ -22,6 +22,7 @@ export function Login({ setCurrentUser }) {
         });
         if (response?.status === 200) {
             setCurrentUser(nameText);
+            localStorage.setItem('currentUser', nameText);
             navigate('/stories');
         }
         else {
@@ -45,6 +46,7 @@ export function Login({ setCurrentUser }) {
             });
             if (response?.status === 200) {
                 setCurrentUser(nameText);
+                localStorage.setItem('currentUser', nameText);
                 navigate('/stories');
             } else {
                 const responseJSON = await response.json();
