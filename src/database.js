@@ -39,8 +39,8 @@ export async function addNewStoryToDB(storyObj) {
     return await endpointHandler('/api/stories', 'post', { newStory: storyObj });
 }
 
-export async function addCommentToStory(storyObj, newComment) {
-    return await endpointHandler('/stories/comment', 'put', { storyUUID: storyObj.uuid, newComment: newComment });
+export async function addCommentToStory(storyUUID, newComment) {
+    return await endpointHandler('/api/stories/comment', 'put', { storyUUID: storyUUID, newComment: newComment });
 }
 
 export async function addRandomStoryToDB() {
@@ -60,7 +60,7 @@ async function endpointHandler(endpoint, method, obj = "") {
 
     const response = await fetch(endpoint, params);
 
-    if (response.status >= 500) {
+    if (response.status >= 500 || response.status == 404) {
         throw new Error("network error");
     }
 

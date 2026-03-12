@@ -152,7 +152,7 @@ apiRouter.put('/stories/comment', authCheck, async (req, res) => {
     const newComment = req.body.newComment;
     const storyUUID = req.body.storyUUID;
     if ('author' in newComment && 'text' in newComment && 'uuid' in newComment && storyUUID !== null) {
-        newStory = findStoryByUUID(storyUUID);
+        newStory = await findStoryByUUID(storyUUID);
         if (newStory) {
             newStory.comments.push(newComment);
             res.status(204).end();

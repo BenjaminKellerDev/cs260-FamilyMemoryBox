@@ -40,13 +40,6 @@ export function Stories({ currentUser }) {
     function Story({ storyOBJ }) {
         const [comments, setComments] = React.useState(storyOBJ.comments);
 
-        React.useEffect(() => {
-            if (storyOBJ.comments !== comments) {
-                storyOBJ.comments = comments;
-                addCommentToStory(storyOBJ)
-            }
-        }, [comments]);
-
         return (
             <div className="story">
                 <hr></hr>
@@ -57,20 +50,20 @@ export function Stories({ currentUser }) {
                 </p>
                 <p className="leftElement">{storyOBJ.story} </p>
                 <hr></hr>
-                <CommentSection comments={comments} />
+                <CommentSection storyUUID={storyOBJ.uuid} comments={comments} setComments={setComments} />
             </div>
 
         );
 
-        function CommentSection({ comments }) {
+        function CommentSection({ storyUUID, comments, setComments }) {
             const [commentInput, setCommentInput] = React.useState('');
-            function addComment(e) {
+            async function addComment(e) {
                 e.preventDefault();
                 if (commentInput.length > 0) {
                     const newComment = { author: currentUser, text: commentInput, uuid: crypto.randomUUID() }
-                    //addCommentToStory(storyOBJ, newComment);
-                    setComments([...comments, newComment]);
                     setCommentInput('');
+                    await addCommentToStory(storyUUID, newComment);
+                    setComments([...comments, newComment]);
                 }
             }
             return (
