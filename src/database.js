@@ -23,12 +23,12 @@ export async function getTagsFromDatabase() {
     return await endpointHandler('/api/tags', 'get');
 }
 
-export function postTagToDatabase(tag) {
-    localStorage.setItem('tags', JSON.stringify(tags));
+export async function postTagToDatabase(tag) {
+    return await endpointHandler('/api/tags', 'post', tag);
 }
 
-export function deleteTagFromDatabase(tag) {
-
+export async function deleteTagFromDatabase(tag) {
+    return await endpointHandler('/api/tags', 'delete', tag);
 }
 
 export async function getStoriesFromDB() {
@@ -52,30 +52,13 @@ export function updateStoryComments(storyObj) {
     localStorage.setItem('Stories', JSON.stringify(storyList));
 }
 
-async function getEndpoint(endpoint) {
-    const response = await fetch(endpoint, {
-        method: 'get'
-    });
-
-    if (response.status >= 500) {
-        throw new Error("network error");
-    }
-
-    const responseJSON = await response.json();
-
-    if ('msg' in responseJSON) {
-        throw new Error(responseJSON.msg);
-    }
-    return responseJSON;
-}
-
 async function endpointHandler(endpoint, method, obj = "") {
     let params = {
         method: method,
     }
     if (method !== 'get') {
         params.body = JSON.stringify(obj);
-        patams.headers = {
+        params.headers = {
             'Content-type': 'application/json; charset=UTF-8'
         };
     }
