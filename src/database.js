@@ -20,10 +20,10 @@ const defaultStory = {
     ]
 }
 export async function getTagsFromDatabase() {
+    return await getEndpoint('/api/tags');
     const response = await fetch('/api/tags', {
         method: 'get'
     });
-
 
     try {
         const responseJSON = await response.json();
@@ -35,6 +35,23 @@ export async function getTagsFromDatabase() {
     } catch (e) {
         throw new Error("network error");
     }
+}
+
+async function getEndpoint(endpoint) {
+    const response = await fetch(endpoint, {
+        method: 'get'
+    });
+
+    if (response.status >= 500) {
+        throw new Error("network error");
+    }
+
+    const responseJSON = await response.json();
+
+    if ('msg' in responseJSON) {
+        throw new Error(responseJSON.msg);
+    }
+    return responseJSON;
 }
 
 export function setTagsToDatabase(tags) {
