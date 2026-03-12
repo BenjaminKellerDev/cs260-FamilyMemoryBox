@@ -1,7 +1,7 @@
 import React from 'react';
 import './tags.css';
 
-import { getTagsFromDatabase, setTagsToDatabase } from '../database'
+import { getTagsFromDatabase, postTagToDatabase, deleteTagFromDatabase } from '../database'
 
 export function Tags() {
     const [errorMSG, setErrorMSG] = React.useState('');
@@ -16,24 +16,18 @@ export function Tags() {
     const [tags, setTags] = React.useState([]);
 
     const [tagInput, setTagInput] = React.useState('');
-    function addTag(e) {
+    async function addTag(e) {
         e.preventDefault();
         if (tagInput.length != 0 && !tags.includes(tagInput)) {
-            setTags(oldTags => {
-                const newTags = [...oldTags, tagInput]
-                setTagsToDatabase(newTags);
-                setTagInput("");
-                return newTags;
-            })
+            const newTags = await postTagToDatabase(tagInput);
+            setTags(newTags);
+            setTagInput("");
         }
     }
 
-    function removeTag(e) {
-        setTags(oldTags => {
-            const newTags = tags.filter(tags => tags != e.target.firstChild.data)
-            setTagsToDatabase(newTags);
-            return newTags;
-        })
+    async function removeTag(e) {
+        const newTags = await deleteTagFromDatabase(e.target.firstChild.data);
+        setTags(newTags);
     }
 
     return (
