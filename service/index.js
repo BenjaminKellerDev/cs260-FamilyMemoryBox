@@ -149,7 +149,7 @@ apiRouter.post('/stories', authCheck, async (req, res) => {
     }
 });
 
-apiRouter.post('/stories/comment', authCheck, async (req, res) => {
+apiRouter.put('/stories/comment', authCheck, async (req, res) => {
     const newComment = req.body.newComment;
     const storyUUID = req.body.storyUUID;
     if ('author' in newComment && 'text' in newComment && 'uuid' in newComment && storyUUID !== null) {
