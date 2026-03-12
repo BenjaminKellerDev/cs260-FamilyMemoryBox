@@ -98,6 +98,12 @@ apiRouter.post('/tags', async (req, res) => {
     res.status(204).end();
 });
 
+apiRouter.delete('/tags', async (req, res) => {
+    if (!checkAuth(req, res)) { return; }
+    tags = tags.filter(t => t !== req.body.tagToRemove);
+    res.status(204).end();
+});
+
 apiRouter.get('/stories', async (req, res) => {
     if (!checkAuth(req, res)) { return; }
     res.send(stories);
