@@ -47,7 +47,8 @@ export function Login({ setCurrentUser }) {
                 setCurrentUser(nameText);
                 navigate('/stories');
             } else {
-                setErrorMSG(response.body.msg);
+                const responseJSON = await response.json();
+                setErrorMSG(responseJSON.msg);
             }
         }
 
