@@ -92,7 +92,9 @@ apiRouter.get('/tags', async (req, res) => {
 
 apiRouter.post('/tags', async (req, res) => {
     if (!checkAuth(req, res)) { return; }
-    tags.push(req.body.newTag);
+    if (!tags.includes(req.body.newTag)) {
+        tags.push(req.body.newTag);
+    }
     res.status(204).end();
 });
 
