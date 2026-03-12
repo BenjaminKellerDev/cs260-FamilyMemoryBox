@@ -125,12 +125,12 @@ apiRouter.post('/tags', authCheck, async (req, res) => {
     if (!tags.includes(req.body.newTag)) {
         tags.push(req.body.newTag);
     }
-    res.status(204).end();
+    res.send(JSON.stringify(tags));
 });
 
 apiRouter.delete('/tags', authCheck, async (req, res) => {
     tags = tags.filter(t => t !== req.body.tagToRemove);
-    res.status(204).end();
+    res.send(JSON.stringify(tags));
 });
 
 apiRouter.get('/stories', authCheck, async (req, res) => {

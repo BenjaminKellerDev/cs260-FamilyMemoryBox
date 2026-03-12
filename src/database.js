@@ -23,8 +23,12 @@ export async function getTagsFromDatabase() {
     return await getEndpoint('/api/tags');
 }
 
-export function setTagsToDatabase(tags) {
+export function postTagToDatabase(tag) {
     localStorage.setItem('tags', JSON.stringify(tags));
+}
+
+export function deleteTagFromDatabase(tag) {
+
 }
 
 export async function getStoriesFromDB() {
