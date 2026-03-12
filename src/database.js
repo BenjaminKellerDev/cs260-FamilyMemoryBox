@@ -43,6 +43,10 @@ export async function addCommentToStory(storyObj, newComment) {
     return await endpointHandler('/stories/comment', 'put', { storyUUID: storyObj.uuid, newComment: newComment });
 }
 
+export async function addRandomStoryToDB() {
+    return await endpointHandler('/stories/random', 'post');
+}
+
 async function endpointHandler(endpoint, method, obj = "") {
     let params = {
         method: method,
@@ -71,78 +75,3 @@ async function endpointHandler(endpoint, method, obj = "") {
     return responseJSON;
 }
 
-export function addRandomStoryToDB() {
-    const titles = [
-        "Guys, I just heard this from Frank.",
-        "Okay, so apparently Frank told me this.",
-        "Don’t quote me, but Frank mentioned something wild.",
-        "I just got this from Frank.",
-        "So I heard from Frank that this is true.",
-        "Word is, Frank confirmed it.",
-        "I just talked to Frank about this.",
-        "This came straight from Frank.",
-        "I heard through Frank that this happened.",
-        "Frank literally just told me this.",
-        "Frank just pulled me aside and said this.",
-        "I wasn’t supposed to say anything, but Frank told me.",
-        "This is straight from Frank’s mouth.",
-        "Frank swears this is legit.",
-        "Frank mentioned this earlier.",
-        "I got this directly from Frank.",
-        "Frank hinted at this happening.",
-        "Frank brought this up yesterday.",
-        "Frank says this is confirmed.",
-        "Frank told me not to spread this, but...",
-        "Apparently Frank was there when it happened.",
-        "Frank insists this is real.",
-        "Frank let this slip earlier.",
-        "Frank said this off the record.",
-        "This came up in a convo with Frank."
-    ];
-    const chuckNorrisJokes = [
-        "Chuck Norris can take a screenshot of his blue screen.",
-        "Chuck Norris writes code that optimizes itself.",
-        "Chuck Norris doesn’t debug — his code simply apologizes.",
-        "Chuck Norris can divide by zero.",
-        "Chuck Norris doesn’t use version control — he controls versions.",
-        "Chuck Norris can compile JavaScript.",
-        "Chuck Norris doesn’t need comments — his code is self-intimidating.",
-        "Chuck Norris finished the entire npm install instantly.",
-        "Chuck Norris can overflow a boolean.",
-        "Chuck Norris doesn’t use Stack Overflow — Stack Overflow uses Chuck Norris."
-    ];
-    const peoples = [
-        "Linus Torvalds",
-        "Richard Stallman",
-        "Gabe Newell",
-        "James Gosling",
-        "Uncle Bob",
-        "Joe M.",
-        "Jan van Eyck",
-        "keith the c++ mascot"
-    ];
-
-    let newStory = {
-        title: titles[Math.floor(Math.random() * titles.length)],
-        author: "Grandma",
-        postTime: Math.floor(Date.now() / 1000),
-        uuid: crypto.randomUUID(),
-        storyTags: ["Family-Friend Frank"],
-        story: chuckNorrisJokes[Math.floor(Math.random() * chuckNorrisJokes.length)],
-        comments: [
-            {
-                author: peoples[Math.floor(Math.random() * peoples.length)],
-                text: "woah.",
-                uuid: crypto.randomUUID()
-            }
-        ]
-    }
-
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    while (storyList.find(story => story.title === newStory.title)) {
-        newStory.title = titles[Math.floor(Math.random() * titles.length)];
-    }
-
-    addNewStoryToDB(newStory);
-
-}
