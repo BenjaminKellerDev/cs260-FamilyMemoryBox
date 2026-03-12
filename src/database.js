@@ -21,20 +21,6 @@ const defaultStory = {
 }
 export async function getTagsFromDatabase() {
     return await getEndpoint('/api/tags');
-    const response = await fetch('/api/tags', {
-        method: 'get'
-    });
-
-    try {
-        const responseJSON = await response.json();
-
-        if ('msg' in responseJSON) {
-            throw new Error(responseJSON.msg);
-        }
-        return responseJSON;
-    } catch (e) {
-        throw new Error("network error");
-    }
 }
 
 async function getEndpoint(endpoint) {
@@ -58,8 +44,8 @@ export function setTagsToDatabase(tags) {
     localStorage.setItem('tags', JSON.stringify(tags));
 }
 
-export function getStoriesFromDB() {
-    return JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
+export async function getStoriesFromDB() {
+    return await getEndpoint('/api/stories');
 }
 
 export function addNewStoryToDB(storyObj) {
