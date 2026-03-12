@@ -19,8 +19,13 @@ const defaultStory = {
         }
     ]
 }
-export function getTagsFromDatabase() {
-    return JSON.parse(localStorage.getItem('tags')) || ['Grandma', 'Europe', 'Family-Friend Frank'];
+export async function getTagsFromDatabase() {
+    let tagArray = [];
+    const response = await fetch('/api/tags', {
+        method: 'get'
+    }).then((responce) => responce.json())
+        .then((responceJSON) => tagArray = responceJSON);
+    return tagArray;
 }
 
 export function setTagsToDatabase(tags) {
