@@ -74,6 +74,26 @@ async function endpointHandler(endpoint, method, obj = "") {
         method: method,
     }
     if (method !== 'get') {
+        params.body = JSON.stringify(obj);
+        patams.headers = {
+            'Content-type': 'application/json; charset=UTF-8'
+        };
+    }
+
+    const response = await fetch(endpoint, params);
+
+    if (response.status >= 500) {
+        throw new Error("network error");
+    }
+
+    const responseJSON = await response.json();
+
+    if ('msg' in responseJSON) {
+        throw new Error(responseJSON.msg);
+    }
+    return responseJSON;
+}
+
 export function addRandomStoryToDB() {
     const titles = [
         "Guys, I just heard this from Frank.",
