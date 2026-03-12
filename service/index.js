@@ -8,7 +8,7 @@ const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-let tags = [];
+let tags = ['Europe', 'Grandma', 'Family-Friend Frank'];
 let stories = [];
 let users = [];
 
@@ -87,7 +87,7 @@ async function findUserByAttribute(attribute, key) {
 
 apiRouter.get('/tags', async (req, res) => {
     if (!checkAuth(req, res)) { return; }
-
+    res.send(tags);
 });
 
 apiRouter.post('/tags', async (req, res) => {
@@ -100,7 +100,7 @@ apiRouter.post('/tags', async (req, res) => {
 
 apiRouter.get('/stories', async (req, res) => {
     if (!checkAuth(req, res)) { return; }
-
+    res.send(stories);
 });
 
 apiRouter.post('/stories', async (req, res) => {
