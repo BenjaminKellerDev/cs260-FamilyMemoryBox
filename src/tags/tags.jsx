@@ -5,8 +5,8 @@ import { getTagsFromDatabase, setTagsToDatabase } from '../database'
 
 export function Tags() {
 
-    React.useEffect(() => {
-        setTags(getTagsFromDatabase())
+    React.useEffect(async () => {
+        setTags(await getTagsFromDatabase())
     }, []);
 
     const [tags, setTags] = React.useState([]);
