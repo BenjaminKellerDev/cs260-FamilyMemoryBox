@@ -39,16 +39,8 @@ export async function addNewStoryToDB(storyObj) {
     return await endpointHandler('/api/stories', 'post', { newStory: storyObj });
 }
 
-export function addCommentToStory(storyObj, commentObj) {
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    storyList.find(story => story.uuid === storyObj.uuid).comments.push(commentObj);
-    localStorage.setItem('Stories', JSON.stringify(storyList));
-}
-
-export function updateStoryComments(storyObj) {
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    storyList.find(story => story.uuid === storyObj.uuid).comments = storyObj.comments;
-    localStorage.setItem('Stories', JSON.stringify(storyList));
+export async function addCommentToStory(storyObj, newComment) {
+    return await endpointHandler('/stories/comment', 'put', { storyUUID: storyObj.uuid, newComment: newComment });
 }
 
 async function endpointHandler(endpoint, method, obj = "") {

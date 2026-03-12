@@ -2,7 +2,7 @@ import React from 'react';
 import './stories.css';
 import { useNavigate } from 'react-router-dom';
 
-import { getStoriesFromDB, addCommentToStory, updateStoryComments, addRandomStoryToDB } from '../database'
+import { getStoriesFromDB, addCommentToStory, addRandomStoryToDB } from '../database'
 import { Popup } from './popup'
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export function Stories({ currentUser }) {
         React.useEffect(() => {
             if (storyOBJ.comments !== comments) {
                 storyOBJ.comments = comments;
-                updateStoryComments(storyOBJ)
+                addCommentToStory(storyOBJ)
             }
         }, [comments]);
 
