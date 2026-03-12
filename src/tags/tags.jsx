@@ -4,9 +4,13 @@ import './tags.css';
 import { getTagsFromDatabase, setTagsToDatabase } from '../database'
 
 export function Tags() {
+    const [errorMSG, setErrorMSG] = React.useState('');
 
-    React.useEffect(async () => {
-        setTags(await getTagsFromDatabase())
+
+    React.useEffect(() => {
+        (async () => {
+            setTags(await getTagsFromDatabase().catch(err => setErrorMSG(err)))
+        })();
     }, []);
 
     const [tags, setTags] = React.useState([]);
@@ -39,6 +43,7 @@ export function Tags() {
                 <div id="tagContainer">
                     {tags.map((name, index) => <Tag key={index} name={name} />)}
                 </div>
+                <div className='errorMSG'> {errorMSG}</div>
             </section>
             <form action="tags">
                 <input type="text" autoComplete="off" id="tagBox" name="newTag" className="shrink text-form-control form-control" placeholder="Tag Name" onChange={e => setTagInput(e.target.value)} value={tagInput} />
