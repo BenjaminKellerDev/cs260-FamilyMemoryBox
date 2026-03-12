@@ -23,23 +23,6 @@ export async function getTagsFromDatabase() {
     return await getEndpoint('/api/tags');
 }
 
-async function getEndpoint(endpoint) {
-    const response = await fetch(endpoint, {
-        method: 'get'
-    });
-
-    if (response.status >= 500) {
-        throw new Error("network error");
-    }
-
-    const responseJSON = await response.json();
-
-    if ('msg' in responseJSON) {
-        throw new Error(responseJSON.msg);
-    }
-    return responseJSON;
-}
-
 export function setTagsToDatabase(tags) {
     localStorage.setItem('tags', JSON.stringify(tags));
 }
@@ -63,6 +46,23 @@ export function updateStoryComments(storyObj) {
     const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
     storyList.find(story => story.uuid === storyObj.uuid).comments = storyObj.comments;
     localStorage.setItem('Stories', JSON.stringify(storyList));
+}
+
+async function getEndpoint(endpoint) {
+    const response = await fetch(endpoint, {
+        method: 'get'
+    });
+
+    if (response.status >= 500) {
+        throw new Error("network error");
+    }
+
+    const responseJSON = await response.json();
+
+    if ('msg' in responseJSON) {
+        throw new Error(responseJSON.msg);
+    }
+    return responseJSON;
 }
 
 export function addRandomStoryToDB() {
