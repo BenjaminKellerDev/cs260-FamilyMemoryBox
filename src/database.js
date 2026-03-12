@@ -20,7 +20,7 @@ const defaultStory = {
     ]
 }
 export async function getTagsFromDatabase() {
-    return await getEndpoint('/api/tags');
+    return await endpointHandler('/api/tags', 'get');
 }
 
 export function postTagToDatabase(tag) {
@@ -32,7 +32,7 @@ export function deleteTagFromDatabase(tag) {
 }
 
 export async function getStoriesFromDB() {
-    return await getEndpoint('/api/stories');
+    return await endpointHandler('/api/stories', 'get');
 }
 
 export function addNewStoryToDB(storyObj) {
@@ -69,6 +69,11 @@ async function getEndpoint(endpoint) {
     return responseJSON;
 }
 
+async function endpointHandler(endpoint, method, obj = "") {
+    let params = {
+        method: method,
+    }
+    if (method !== 'get') {
 export function addRandomStoryToDB() {
     const titles = [
         "Guys, I just heard this from Frank.",
