@@ -24,16 +24,17 @@ export async function getTagsFromDatabase() {
         method: 'get'
     });
 
-    if (!response.ok) {
+
+    try {
+        const responseJSON = await response.json();
+
+        if ('msg' in responseJSON) {
+            throw new Error(responseJSON.msg);
+        }
+        return responseJSON;
+    } catch (e) {
         throw new Error("network error");
     }
-
-    const responceJSON = responce.json();
-
-    if ('msg' in responceJSON) {
-        throw new Error(responceJSON.msg);
-    }
-    return responceJSON;
 }
 
 export function setTagsToDatabase(tags) {
