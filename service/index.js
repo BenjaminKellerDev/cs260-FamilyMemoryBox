@@ -143,6 +143,23 @@ apiRouter.post('/stories', async (req, res) => {
     }
 });
 
+apiRouter.post('/stories/comment', async (req, res) => {
+    if (!await checkAuth(req, res)) { return; }
+    const newComment = req.body.newComment;
+    const storyUUID = req.body.storyUUID;
+    if ('author' in newComment && 'text' in newComment && 'uuid' in newComment && storyUUID !== null) {
+        newStory = findStoryByUUID(storyUUID);
+        if (newStory) {
+            newStory.comments.push(newComment);
+            res.status(204).end();
+        }
+        else {
+            res.status(400).send({ msg: 'unknown story uuid' });
+        }
+    else {
+        res.status(400).send({ msg: 'comment in wrong format' });
+    }
+});
 
 
 async function checkAuth(req, res) {
