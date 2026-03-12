@@ -9,8 +9,28 @@ const authCookieName = 'token';
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 let tags = ['Europe', 'Grandma', 'Family-Friend Frank'];
-let stories = [];
+let stories = [defaultStory];
 let users = [];
+
+const defaultStory = {
+    title: "That one time I went to that one place",
+    author: "Grandma",
+    postTime: 1772074405,
+    uuid: crypto.randomUUID(),
+    storyTags: ["Grandma", "Europe", "Family-Friend Frank"],
+    story: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis unde ipsa repellat iure vel ipsum nostrum molestiae distinctio facilis adipisci necessitatibus quasi tempora eveniet, quisquam saepe id? Natus, illum excepturi.",
+    comments: [
+        {
+            author: "Dad",
+            text: "I remember that!!",
+            uuid: crypto.randomUUID()
+        }, {
+            author: "Grandson",
+            text: "Wow! So cool! Is that where the turboencabulator you have in the garage came from?",
+            uuid: crypto.randomUUID()
+        }
+    ]
+}
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -120,6 +140,8 @@ apiRouter.post('/stories', async (req, res) => {
         res.status(400).send({ msg: 'story in wrong format' });
     }
 });
+
+
 
 async function checkAuth(req, res) {
     const user = await findUserByAttribute('token', req.cookies[authCookieName]);
