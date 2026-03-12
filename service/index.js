@@ -90,7 +90,8 @@ apiRouter.get('/tags', async (req, res) => {
 });
 
 apiRouter.post('/tags', async (req, res) => {
-
+    tags.push(req.body.newTag);
+    res.status(204).end();
 });
 
 apiRouter.get('/stories', async (req, res) => {
