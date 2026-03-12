@@ -86,15 +86,18 @@ async function findUserByAttribute(attribute, key) {
 }
 
 apiRouter.get('/tags', async (req, res) => {
+    if (!checkAuth(req, res)) { return; }
 
 });
 
 apiRouter.post('/tags', async (req, res) => {
+    if (!checkAuth(req, res)) { return; }
     tags.push(req.body.newTag);
     res.status(204).end();
 });
 
 apiRouter.get('/stories', async (req, res) => {
+    if (!checkAuth(req, res)) { return; }
 
 });
 
