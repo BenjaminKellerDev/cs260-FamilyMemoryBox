@@ -99,8 +99,24 @@ apiRouter.get('/stories', async (req, res) => {
 });
 
 apiRouter.post('/stories', async (req, res) => {
-
+    if (!checkAuth(req, res)) { return; }
+    const newStory = req.body.newStory;
+    if ('title' in newStory && 'author' in newStory && 'uuid' in newStory && 'story' in newStory) {
+        stories.push(req.body.newStory);
+        res.status(204).end();
+    }
+    else {
+        res.status(400).send({ msg: 'story in wrong format' });
+    }
 });
+
+async function checkAuth(req, res) {
+    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
+    if (user === null) {
+        res.status(401).send({ msg: "unauthorized" });
+        return false;
+    } else { return true; }
+}
 
 
 app.listen(port, () => {
