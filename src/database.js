@@ -44,10 +44,10 @@ export async function addCommentToStory(storyUUID, newComment) {
 }
 
 export async function addRandomStoryToDB() {
-    return await endpointHandler('/stories/random', 'post');
+    return await endpointHandler('/api/stories/random', 'post');
 }
 
-async function endpointHandler(endpoint, method, obj = "") {
+async function endpointHandler(endpoint, method, obj = {}) {
     let params = {
         method: method,
     }

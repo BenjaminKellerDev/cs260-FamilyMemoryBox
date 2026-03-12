@@ -242,10 +242,6 @@ function getRandomStory() {
         ]
     }
 
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    while (storyList.find(story => story.title === newStory.title)) {
-        newStory.title = titles[Math.floor(Math.random() * titles.length)];
-    }
 
     return newStory;
 
