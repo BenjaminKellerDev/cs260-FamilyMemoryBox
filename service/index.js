@@ -89,6 +89,18 @@ apiRouter.get('/tags', async (req, res) => {
 
 });
 
+apiRouter.post('/tags', async (req, res) => {
+
+});
+
+apiRouter.get('/stories', async (req, res) => {
+
+});
+
+apiRouter.post('/stories', async (req, res) => {
+
+});
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
