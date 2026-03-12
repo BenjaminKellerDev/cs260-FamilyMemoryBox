@@ -7,15 +7,21 @@ import { Popup } from './popup'
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
 
+    const [errorMSG, setErrorMSG] = React.useState('');
+
     const [stories, setStories] = React.useState([]);
     React.useEffect(() => {
-        setStories(getStoriesFromDB());
+        getStoriesFromDB()
+            .then(setStories)
+            .catch(setErrorMSG)
     }, []);
 
 
     function refreshPosts() {
         addRandomStoryToDB();
-        setStories(getStoriesFromDB());
+        getStoriesFromDB()
+            .then(setStories)
+            .catch(setErrorMSG)
     }
 
     return (
@@ -34,7 +40,12 @@ export function Stories({ currentUser }) {
     function Story({ storyOBJ }) {
         const [comments, setComments] = React.useState(storyOBJ.comments);
 
-        React.useEffect(() => { storyOBJ.comments = comments; updateStoryComments(storyOBJ) }, [comments]);
+        React.useEffect(() => {
+            if (storyOBJ.comments !== comments) {
+                storyOBJ.comments = comments;
+                updateStoryComments(storyOBJ)
+            }
+        }, [comments]);
 
         return (
             <div className="story">
