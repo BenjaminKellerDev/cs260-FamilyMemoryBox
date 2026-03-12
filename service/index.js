@@ -85,6 +85,10 @@ async function findUserByAttribute(attribute, key) {
     return await users.find((u) => u[attribute] === key);
 }
 
+apiRouter.get('/tags', async (req, res) => {
+
+});
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
