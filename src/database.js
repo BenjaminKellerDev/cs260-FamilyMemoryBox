@@ -35,9 +35,8 @@ export async function getStoriesFromDB() {
     return await endpointHandler('/api/stories', 'get');
 }
 
-export function addNewStoryToDB(storyObj) {
-    const storyList = JSON.parse(localStorage.getItem('Stories')) || [defaultStory];
-    localStorage.setItem('Stories', JSON.stringify([...storyList, storyObj]));
+export async function addNewStoryToDB(storyObj) {
+    return await endpointHandler('/api/stories', 'post', { newStory: storyObj });
 }
 
 export function addCommentToStory(storyObj, commentObj) {
@@ -69,7 +68,10 @@ async function endpointHandler(endpoint, method, obj = "") {
         throw new Error("network error");
     }
 
-    const responseJSON = await response.json();
+    let responseJSON;
+    try {
+        responseJSON = await response.json();
+    } catch (e) { return null; }
 
     if ('msg' in responseJSON) {
         throw new Error(responseJSON.msg);

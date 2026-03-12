@@ -2,14 +2,15 @@ import React from 'react';
 import '../tags/tags.css';
 import { useNavigate } from 'react-router-dom';
 
-import { getTagsFromDatabase, getStoriesFromDB, addNewStoryToDB } from '../database'
+import { getTagsFromDatabase, addNewStoryToDB } from '../database'
 
 export function Drafting({ currentUser }) {
     const navigate = useNavigate();
 
     const [tags, setTags] = React.useState([]);
     React.useEffect(() => {
-        setTags(getTagsFromDatabase())
+        getTagsFromDatabase()
+            .then(setTags);
     }, []);
 
     const [title, setTitle] = React.useState('');
@@ -25,7 +26,7 @@ export function Drafting({ currentUser }) {
         }
     }
 
-    function uploadStory(e) {
+    async function uploadStory(e) {
         e.preventDefault();
         if (title.length !== 0 && story.length !== 0) {
             let storyOBJ = new Object();
@@ -36,7 +37,7 @@ export function Drafting({ currentUser }) {
             storyOBJ.storyTags = storyTags;
             storyOBJ.story = story;
             storyOBJ.comments = [];
-            addNewStoryToDB(storyOBJ);
+            await addNewStoryToDB(storyOBJ);
             navigate('/stories');
         }
     }
