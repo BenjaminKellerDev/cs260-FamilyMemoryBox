@@ -108,12 +108,12 @@ async function findUserByAttribute(attribute, key) {
 }
 
 apiRouter.get('/tags', async (req, res) => {
-    if (!checkAuth(req, res)) { return; }
+    if (!await checkAuth(req, res)) { return; }
     res.send(tags);
 });
 
 apiRouter.post('/tags', async (req, res) => {
-    if (!checkAuth(req, res)) { return; }
+    if (!await checkAuth(req, res)) { return; }
     if (!tags.includes(req.body.newTag)) {
         tags.push(req.body.newTag);
     }
@@ -121,18 +121,18 @@ apiRouter.post('/tags', async (req, res) => {
 });
 
 apiRouter.delete('/tags', async (req, res) => {
-    if (!checkAuth(req, res)) { return; }
+    if (!await checkAuth(req, res)) { return; }
     tags = tags.filter(t => t !== req.body.tagToRemove);
     res.status(204).end();
 });
 
 apiRouter.get('/stories', async (req, res) => {
-    if (!checkAuth(req, res)) { return; }
+    if (!await checkAuth(req, res)) { return; }
     res.send(stories);
 });
 
 apiRouter.post('/stories', async (req, res) => {
-    if (!checkAuth(req, res)) { return; }
+    if (!await checkAuth(req, res)) { return; }
     const newStory = req.body.newStory;
     if ('title' in newStory && 'author' in newStory && 'uuid' in newStory && 'story' in newStory) {
         stories.push(req.body.newStory);
