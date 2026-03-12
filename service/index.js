@@ -8,10 +8,6 @@ const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-let tags = ['Europe', 'Grandma', 'Family-Friend Frank'];
-let stories = [defaultStory];
-let users = [];
-
 const defaultStory = {
     title: "That one time I went to that one place",
     author: "Grandma",
@@ -31,6 +27,12 @@ const defaultStory = {
         }
     ]
 }
+
+let tags = ['Europe', 'Grandma', 'Family-Friend Frank'];
+let stories = [defaultStory];
+let users = [];
+
+
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
