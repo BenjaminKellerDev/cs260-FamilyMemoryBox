@@ -106,33 +106,39 @@ async function findUserByAttribute(attribute, key) {
     if (!key) return null;
     return await users.find((u) => u[attribute] === key);
 }
+//auth check middleware
+async function authCheck(req, res, next) {
 
-apiRouter.get('/tags', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
+    if (user === null) {
+        res.status(401).send({ msg: "unauthorized" });
+    } else {
+        next();
+    }
+
+}
+
+apiRouter.get('/tags', authCheck, async (req, res) => {
     res.send(tags);
 });
 
-apiRouter.post('/tags', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+apiRouter.post('/tags', authCheck, async (req, res) => {
     if (!tags.includes(req.body.newTag)) {
         tags.push(req.body.newTag);
     }
     res.status(204).end();
 });
 
-apiRouter.delete('/tags', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+apiRouter.delete('/tags', authCheck, async (req, res) => {
     tags = tags.filter(t => t !== req.body.tagToRemove);
     res.status(204).end();
 });
 
-apiRouter.get('/stories', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+apiRouter.get('/stories', authCheck, async (req, res) => {
     res.send(stories);
 });
 
-apiRouter.post('/stories', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+apiRouter.post('/stories', authCheck, async (req, res) => {
     const newStory = req.body.newStory;
     if ('title' in newStory && 'author' in newStory && 'uuid' in newStory && 'story' in newStory) {
         stories.push(req.body.newStory);
@@ -143,8 +149,7 @@ apiRouter.post('/stories', async (req, res) => {
     }
 });
 
-apiRouter.post('/stories/comment', async (req, res) => {
-    if (!await checkAuth(req, res)) { return; }
+apiRouter.post('/stories/comment', authCheck, async (req, res) => {
     const newComment = req.body.newComment;
     const storyUUID = req.body.storyUUID;
     if ('author' in newComment && 'text' in newComment && 'uuid' in newComment && storyUUID !== null) {
@@ -156,20 +161,16 @@ apiRouter.post('/stories/comment', async (req, res) => {
         else {
             res.status(400).send({ msg: 'unknown story uuid' });
         }
+    }
     else {
         res.status(400).send({ msg: 'comment in wrong format' });
     }
 });
 
-
-async function checkAuth(req, res) {
-    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
-    if (user === null) {
-        res.status(401).send({ msg: "unauthorized" });
-        return false;
-    } else { return true; }
+async function findStoryByUUID(uuid) {
+    if (!uuid) return null;
+    return await stories.find((s) => s.uuid === uuid);
 }
-
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
