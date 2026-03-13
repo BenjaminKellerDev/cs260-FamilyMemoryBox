@@ -26,12 +26,12 @@ export function Stories({ currentUser }) {
 
     return (
         <main>
-            <div className="buttonContainer">
+            {stories.length > 0 && <div className="buttonContainer">
                 <form action="drafting">
                     <button type="submit" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('../drafting'); }}>New Story</button>
                 </form>
                 <Popup refreshPosts={refreshPosts} />
-            </div>
+            </div>}
             {stories && stories.toReversed().map((obj) => <Story key={obj.uuid} storyOBJ={obj} />)}
             <div className='errorMSG'> {errorMSG}</div>
         </main>
