@@ -108,9 +108,9 @@ async function findUserByAttribute(attribute, key) {
 //auth check middleware
 async function authCheck(req, res, next) {
 
-    console.log('authCheck' + (Date.now() / 1000));
+    //console.log('authCheck' + (Date.now() / 1000));
     const user = await findUserByAttribute('token', req.cookies[authCookieName]);
-    if (user === null) {
+    if (user === undefined || user === null) {
         res.status(401).send({ msg: "unauthorized" });
     } else {
         next();
