@@ -6,11 +6,13 @@ import { getTagsFromDatabase, addNewStoryToDB } from '../database'
 
 export function Drafting({ currentUser }) {
     const navigate = useNavigate();
+    const [errorMSG, setErrorMSG] = React.useState('');
 
     const [tags, setTags] = React.useState([]);
     React.useEffect(() => {
         getTagsFromDatabase()
-            .then(setTags);
+            .then(setTags)
+            .catch(err => setErrorMSG(err.message));
     }, []);
 
     const [title, setTitle] = React.useState('');
@@ -62,6 +64,7 @@ export function Drafting({ currentUser }) {
                 <textarea className="text-form-control form-control" id="storyBox" name="storyBox" onChange={(e) => setStory(e.target.value)}></textarea>
                 <br></br>
                 <button type="submit" className="btn btn-secondary" onClick={uploadStory}>Upload</button>
+                <div className='errorMSG'> {errorMSG}</div>
             </form>
         </main>
     );
