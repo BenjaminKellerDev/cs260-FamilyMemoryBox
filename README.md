@@ -110,7 +110,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Static middleware for frontend** - index.js does this too
 - [x] **Calls to third party endpoints** - image api on login.jsx
 - [x] **Backend service endpoints** - all stories and tags work via endpoints
-- [x] **Frontend calls service endpoints** - clearly visible on all pages
+- [x] **Frontend calls service endpoints** - all pages make calls to backend
 - [x] **Supports registration, login, logout, and restricted endpoint** - endpoints do not work unless you have a valid cookie, causes content to not load.
 
 ## 🚀 DB deliverable
