@@ -13,7 +13,7 @@ export function Stories({ currentUser }) {
     React.useEffect(() => {
         getStoriesFromDB()
             .then(setStories)
-            .catch(setErrorMSG)
+            .catch(err => setErrorMSG(err.message))
     }, []);
 
 
@@ -21,7 +21,7 @@ export function Stories({ currentUser }) {
         await addRandomStoryToDB();
         await getStoriesFromDB()
             .then(setStories)
-            .catch(setErrorMSG);
+            .catch(err => setErrorMSG(err.message));
     }
 
     return (
@@ -33,7 +33,7 @@ export function Stories({ currentUser }) {
                 <Popup refreshPosts={refreshPosts} />
             </div>
             {stories && stories.toReversed().map((obj) => <Story key={obj.uuid} storyOBJ={obj} />)}
-
+            <div className='errorMSG'> {errorMSG}</div>
         </main>
     );
 
