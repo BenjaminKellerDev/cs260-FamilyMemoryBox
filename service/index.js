@@ -174,6 +174,7 @@ async function findStoryByUUID(uuid) {
 //temp
 apiRouter.post('/stories/random', authCheck, async (req, res) => {
     stories.push(getRandomStory());
+    res.send();
 });
 function getRandomStory() {
     const titles = [
