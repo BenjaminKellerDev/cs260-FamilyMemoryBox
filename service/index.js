@@ -108,6 +108,7 @@ async function findUserByAttribute(attribute, key) {
 //auth check middleware
 async function authCheck(req, res, next) {
 
+    console.log('authCheck' + (Date.now() / 1000));
     const user = await findUserByAttribute('token', req.cookies[authCookieName]);
     if (user === null) {
         res.status(401).send({ msg: "unauthorized" });
@@ -119,6 +120,7 @@ async function authCheck(req, res, next) {
 //add require json middleware to reduce crashes
 
 apiRouter.get('/tags', authCheck, async (req, res) => {
+    //console.log((Date.now() / 1000));
     res.send(tags);
 });
 
@@ -131,6 +133,7 @@ apiRouter.post('/tags', authCheck, async (req, res) => {
 
 apiRouter.delete('/tags', authCheck, async (req, res) => {
     tags = tags.filter(t => t !== req.body.tagToRemove);
+    //console.log((Date.now() / 1000));
     res.send(JSON.stringify(tags));
 });
 

@@ -106,12 +106,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - located in index.js 
+- [x] **Static middleware for frontend** - index.js does this too
+- [x] **Calls to third party endpoints** - image api on login.jsx
+- [x] **Backend service endpoints** - all stories and tags work via endpoints
+- [x] **Frontend calls service endpoints** - clearly visible on all pages
+- [x] **Supports registration, login, logout, and restricted endpoint** - endpoints do not work unless you have a valid cookie, causes content to not load.
 
 ## 🚀 DB deliverable
 
