@@ -116,6 +116,7 @@ async function authCheck(req, res, next) {
     }
 
 }
+//add require json middleware to reduce crashes
 
 apiRouter.get('/tags', authCheck, async (req, res) => {
     res.send(tags);

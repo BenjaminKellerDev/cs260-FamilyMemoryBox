@@ -69,8 +69,7 @@ export function Login({ setCurrentUser }) {
 
     const [imageOBJ, setImage] = React.useState(null);
     React.useEffect(() => {
-        //getImageFromAPI().then(setImage);
-        setImage(getImageFromAPI());
+        getImageFromAPI().then(setImage);
     }, [])
 
     return (
