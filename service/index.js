@@ -113,9 +113,10 @@ apiRouter.post('/tags', authCheck, async (req, res) => {
 });
 
 apiRouter.delete('/tags', authCheck, async (req, res) => {
-    tags = tags.filter(t => t !== req.body.tagToRemove);
+    await DB.removeTag(req.body.tagToRemove);
     //console.log((Date.now() / 1000));
-    res.send(JSON.stringify(tags));
+    const list = await DB.getTags();
+    res.send(JSON.stringify(list));
 });
 
 apiRouter.get('/stories', authCheck, async (req, res) => {

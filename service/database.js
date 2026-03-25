@@ -76,10 +76,15 @@ async function getStoires() {
 
 }
 
+async function removeTag(tag) {
+    await tagCollection.updateOne({ tagList: 'tagList' }, { $pull: { list: tag } });
+}
+
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
     addUser, addTag,
-    getTags, getStoires
+    getTags, getStoires,
+    removeTag
 }
 
