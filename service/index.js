@@ -76,7 +76,7 @@ async function createUser(nameText, passwordText) {
         password: passwordHash,
         token: uuid.v4()
     };
-    users.push(user);
+    await DB.addUser(user);
     return user.token;
 }
 

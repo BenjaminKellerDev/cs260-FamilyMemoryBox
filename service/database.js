@@ -29,6 +29,12 @@ function findStoryByUUID(uuid) {
     return storiesCollection.findOne({ uuid: uuid });//promise
 }
 
+async function addUser(user) {
+    await usersCollection.insertOne(user);
+}
+
 module.exports = {
-    findUserByAttribute
+    findUserByAttribute,
+    findStoryByUUID,
+    addUser
 }
