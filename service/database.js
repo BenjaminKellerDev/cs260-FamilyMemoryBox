@@ -18,3 +18,8 @@ const storiesCollection = db.collection('stories');
         process.exit(1);
     }
 })();
+
+function findUserByAttribute(attribute, key) {
+    if (!key) return null;
+    return usersCollection.findOne({ [attribute]: key });
+}

@@ -60,7 +60,7 @@ function setAuthCookie(res, authToken) {
 }
 
 apiRouter.post('/auth/create', async (req, res) => {
-    if (await findUserByAttribute('nameText', req.body.nameText)) {
+    if (DB.findUserByAttribute('nameText', req.body.nameText)) {
         res.status(409).send({ msg: 'name already taken' });
     } else {
         const token = await createUser(req.body.nameText, req.body.passwordText);
@@ -81,7 +81,7 @@ async function createUser(nameText, passwordText) {
 }
 
 apiRouter.post('/auth/login', async (req, res) => {
-    const user = await findUserByAttribute('nameText', req.body.nameText);
+    const user = DB.findUserByAttribute('nameText', req.body.nameText);
     if (user) {
         if (await bcrypt.compare(req.body.passwordText, user.password)) {
             user.token = uuid.v4();
@@ -94,7 +94,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 });
 
 apiRouter.delete('/auth/logout', async (req, res) => {
-    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
+    const user = DB.findUserByAttribute('token', req.cookies[authCookieName]);
     if (user) {
         delete user.token;
     }
@@ -110,7 +110,7 @@ async function findUserByAttribute(attribute, key) {
 async function authCheck(req, res, next) {
 
     //console.log('authCheck' + (Date.now() / 1000));
-    const user = await findUserByAttribute('token', req.cookies[authCookieName]);
+    const user = DB.findUserByAttribute('token', req.cookies[authCookieName]);
     if (user === undefined || user === null) {
         res.status(401).send({ msg: "unauthorized" });
     } else {
