@@ -76,7 +76,7 @@ async function createUser(nameText, passwordText) {
         password: passwordHash,
         token: uuid.v4()
     };
-    await DB.addUser(user);
+    DB.addUser(user);
     return user.token;
 }
 
@@ -124,7 +124,7 @@ apiRouter.get('/tags', authCheck, async (req, res) => {
 
 apiRouter.post('/tags', authCheck, async (req, res) => {
     if (!tags.includes(req.body.newTag)) {
-        tags.push(req.body.newTag);
+        DB.addTag(req.body.newTag);
     }
     res.send(JSON.stringify(tags));
 });

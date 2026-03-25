@@ -13,6 +13,9 @@ const storiesCollection = db.collection('stories');
     try {
         await db.command({ ping: 1 });
         console.log("connected to database");
+        if (null == await tagCollection.findOne()) {
+            tagCollection.insertOne({ tagList: 'tagList', list: ['Europe', 'Grandma', 'Family-Friend Frank'] })
+        }
     } catch (ex) {
         console.log("connection to database is not working lol");
         process.exit(1);
@@ -33,8 +36,12 @@ async function addUser(user) {
     await usersCollection.insertOne(user);
 }
 
+async function addTag(tag) {
+    await tagCollection.updateOne({ tagList: 'tagList' }, { $push: { list: tag } });
+}
+
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
-    addUser
+    addUser, addTag
 }
