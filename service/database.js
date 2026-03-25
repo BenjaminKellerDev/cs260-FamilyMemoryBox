@@ -64,7 +64,7 @@ async function addUser(user) {
 }
 
 async function addTag(tag) {
-    await tagCollection.updateOne({ tagList: 'tagList' }, { $push: { list: tag } });
+    await tagCollection.updateOne({ tagList: 'tagList' }, { $addToSet: { list: tag } });
 }
 
 async function getTags() {
