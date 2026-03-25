@@ -67,9 +67,19 @@ async function addTag(tag) {
     await tagCollection.updateOne({ tagList: 'tagList' }, { $push: { list: tag } });
 }
 
+async function getTags() {
+    const list = await tagCollection.findOne({ tagList: 'tagList' })
+    return list.list;
+}
+
+async function getStoires() {
+
+}
+
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
-    addUser, addTag
+    addUser, addTag,
+    getTags, getStoires
 }
 

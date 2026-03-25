@@ -101,7 +101,8 @@ async function authCheck(req, res, next) {
 
 apiRouter.get('/tags', authCheck, async (req, res) => {
     //console.log((Date.now() / 1000));
-    res.send(tags);
+    const list = await DB.getTags();
+    res.send(list);
 });
 
 apiRouter.post('/tags', authCheck, async (req, res) => {
