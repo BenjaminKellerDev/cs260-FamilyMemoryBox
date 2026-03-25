@@ -13,17 +13,22 @@ const storiesCollection = db.collection('stories');
     try {
         await db.command({ ping: 1 });
         console.log("connected to database");
-        if (null == await tagCollection.findOne()) {
-            tagCollection.insertOne({ tagList: 'tagList', list: ['Europe', 'Grandma', 'Family-Friend Frank'] })
-        }
-        if (null == await storiesCollection.findOne()) {
-            storiesCollection.insertOne(defaultStory)
-        }
+        validateDefaults();
+
     } catch (ex) {
         console.log("connection to database is not working lol");
         process.exit(1);
     }
 })();
+
+async function validateDefaults() {
+    if (null == await tagCollection.findOne()) {
+        tagCollection.insertOne({ tagList: 'tagList', list: ['Europe', 'Grandma', 'Family-Friend Frank'] })
+    }
+    if (null == await storiesCollection.findOne()) {
+        storiesCollection.insertOne(defaultStory)
+    }
+}
 
 function findUserByAttribute(attribute, key) {
     if (!key) return null;
