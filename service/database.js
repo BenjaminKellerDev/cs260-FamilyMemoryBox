@@ -21,5 +21,9 @@ const storiesCollection = db.collection('stories');
 
 function findUserByAttribute(attribute, key) {
     if (!key) return null;
-    return usersCollection.findOne({ [attribute]: key });
+    return usersCollection.findOne({ [attribute]: key }); //promise
+}
+
+module.exports = {
+    findUserByAttribute
 }
