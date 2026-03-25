@@ -154,7 +154,7 @@ apiRouter.put('/stories/comment', authCheck, async (req, res) => {
     const newComment = req.body.newComment;
     const storyUUID = req.body.storyUUID;
     if ('author' in newComment && 'text' in newComment && 'uuid' in newComment && storyUUID !== null) {
-        newStory = await findStoryByUUID(storyUUID);
+        newStory = await DB.findStoryByUUID(storyUUID);
         if (newStory) {
             newStory.comments.push(newComment);
             res.status(204).end();
@@ -168,10 +168,6 @@ apiRouter.put('/stories/comment', authCheck, async (req, res) => {
     }
 });
 
-async function findStoryByUUID(uuid) {
-    if (!uuid) return null;
-    return await stories.find((s) => s.uuid === uuid);
-}
 
 //temp
 apiRouter.post('/stories/random', authCheck, async (req, res) => {

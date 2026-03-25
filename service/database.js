@@ -24,6 +24,11 @@ function findUserByAttribute(attribute, key) {
     return usersCollection.findOne({ [attribute]: key }); //promise
 }
 
+function findStoryByUUID(uuid) {
+    if (!uuid) return null;
+    return storiesCollection.findOne({ uuid: uuid });//promise
+}
+
 module.exports = {
     findUserByAttribute
 }
