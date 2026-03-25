@@ -102,10 +102,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     res.status(204).end();
 });
 
-async function findUserByAttribute(attribute, key) {
-    if (!key) return null;
-    return await users.find((u) => u[attribute] === key);
-}
+
 //auth check middleware
 async function authCheck(req, res, next) {
 
