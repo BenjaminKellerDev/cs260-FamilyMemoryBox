@@ -122,7 +122,7 @@ apiRouter.get('/stories', authCheck, async (req, res) => {
 apiRouter.post('/stories', authCheck, async (req, res) => {
     const newStory = req.body.newStory;
     if ('title' in newStory && 'author' in newStory && 'uuid' in newStory && 'story' in newStory) {
-        stories.push(req.body.newStory);
+        await DB.postStory(req.body.newStory);
         res.status(204).end();
     }
     else {

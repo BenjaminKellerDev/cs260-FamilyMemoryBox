@@ -72,19 +72,23 @@ async function getTags() {
     return list.list;
 }
 
+async function removeTag(tag) {
+    return await tagCollection.findOneAndUpdate({ tagList: 'tagList' }, { $pull: { list: tag } }, { returnDocument: "after" });
+}
+
 async function getStories() {
     return await storiesCollection.find({}).toArray();
 }
 
-async function removeTag(tag) {
-    return await tagCollection.findOneAndUpdate({ tagList: 'tagList' }, { $pull: { list: tag } }, { returnDocument: "after" });
+async function postStory(story) {
+    await storiesCollection.insertOne(story);
 }
 
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
-    addUser, addTag,
-    getTags, getStories,
-    removeTag
+    addUser,
+    addTag, getTags, removeTag,
+    getStories, postStory
 }
 
