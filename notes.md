@@ -86,3 +86,6 @@ The last issue I had was enabling a popup component while maintaining the input 
 
 ## Startup Deliverable 
 Had a hard time debugging my first endpoint. Eventually I remembered that the order of the service code matters so I had to move the port listen to the bottom and then my breakpoints finally were getting hit via a manual inspect element api call. Then, I was confused why the front end was getting a server error. Because of my many years self-hosting minecraft servers, I quickly realized it was a port error. Eventually after going back and rereading the documentation, I realized the purpose of vite.config.js was meant to be the proxy for the devolvement environment. It was a good reminder that I need to make sure I understand everything I copy, paste into my code, including the instructions on the course website.
+
+## DB Deliverable 
+Went way easier than I expected. There were a few times where a function returned a promise instead of a value, but debugging really helped with that. I'm still not sure how much database logic (like checking for preexisting users with the same name) to put int index.js or database.js, but for the most part, I kept database.js to one line. 
