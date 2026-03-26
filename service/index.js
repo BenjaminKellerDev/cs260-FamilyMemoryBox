@@ -152,7 +152,7 @@ apiRouter.put('/stories/comment', authCheck, async (req, res) => {
 
 //temp
 apiRouter.post('/stories/random', authCheck, async (req, res) => {
-    stories.push(getRandomStory());
+    await DB.postStory(getRandomStory());
     res.send();
 });
 function getRandomStory() {
