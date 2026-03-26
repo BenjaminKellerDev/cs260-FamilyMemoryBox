@@ -66,7 +66,11 @@ async function addUser(user) {
 }
 
 async function updateCookie(username, token) {
-    await usersCollection.findOneAndUpdate({ 'nameText': username }, { $set: { [authCookieName]: token } })
+    await usersCollection.findOneAndUpdate({ 'nameText': username }, { $set: { [authCookieName]: token } });
+}
+
+async function clearCookie(username) {
+    await usersCollection.findOneAndUpdate({ 'nameText': username }, { $unset: { [authCookieName]: "" } });
 }
 
 async function addTag(tag) {
@@ -97,7 +101,7 @@ async function postComment(storyUUID, comment) {
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
-    addUser, updateCookie,
+    addUser, updateCookie, clearCookie,
     addTag, getTags, removeTag,
     getStories, postStory,
     postComment

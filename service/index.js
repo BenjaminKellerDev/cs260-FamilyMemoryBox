@@ -9,12 +9,6 @@ const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-
-
-let stories = [];
-
-
-
 // JSON body parsing using built-in middleware
 app.use(express.json());
 
@@ -77,7 +71,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await DB.findUserByAttribute('token', req.cookies[authCookieName]);
     if (user) {
-        delete user.token;
+        await DB.clearCookie(user.nameText)
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
