@@ -106,15 +106,14 @@ apiRouter.get('/tags', authCheck, async (req, res) => {
 });
 
 apiRouter.post('/tags', authCheck, async (req, res) => {
-    const list = await DB.addTag(req.body.newTag);
-    res.send(JSON.stringify(list.list));
+    const listOBJ = await DB.addTag(req.body.newTag);
+    res.send(JSON.stringify(listOBJ.list));
 });
 
 apiRouter.delete('/tags', authCheck, async (req, res) => {
-    await DB.removeTag(req.body.tagToRemove);
+    const listOBJ = await DB.removeTag(req.body.tagToRemove);
     //console.log((Date.now() / 1000));
-    const list = await DB.getTags();
-    res.send(JSON.stringify(list));
+    res.send(JSON.stringify(listOBJ.list));
 });
 
 apiRouter.get('/stories', authCheck, async (req, res) => {

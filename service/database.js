@@ -77,7 +77,7 @@ async function getStoires() {
 }
 
 async function removeTag(tag) {
-    await tagCollection.updateOne({ tagList: 'tagList' }, { $pull: { list: tag } });
+    return await tagCollection.findOneAndUpdate({ tagList: 'tagList' }, { $pull: { list: tag } }, { returnDocument: "after" });
 }
 
 module.exports = {
