@@ -106,9 +106,8 @@ apiRouter.get('/tags', authCheck, async (req, res) => {
 });
 
 apiRouter.post('/tags', authCheck, async (req, res) => {
-    DB.addTag(req.body.newTag);
-    const list = await DB.getTags();
-    res.send(JSON.stringify(list));
+    const list = await DB.addTag(req.body.newTag);
+    res.send(JSON.stringify(list.list));
 });
 
 apiRouter.delete('/tags', authCheck, async (req, res) => {
