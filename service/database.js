@@ -90,11 +90,16 @@ async function postStory(story) {
     await storiesCollection.insertOne(story);
 }
 
+async function postComment(storyUUID, comment) {
+    return await storiesCollection.findOneAndUpdate({ uuid: storyUUID }, { $push: { comments: comment } });
+}
+
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
     addUser, updateCookie,
     addTag, getTags, removeTag,
-    getStories, postStory
+    getStories, postStory,
+    postComment
 }
 
