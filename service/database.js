@@ -72,8 +72,8 @@ async function getTags() {
     return list.list;
 }
 
-async function getStoires() {
-
+async function getStories() {
+    return await storiesCollection.find({}).toArray();
 }
 
 async function removeTag(tag) {
@@ -84,7 +84,7 @@ module.exports = {
     findUserByAttribute,
     findStoryByUUID,
     addUser, addTag,
-    getTags, getStoires,
+    getTags, getStories,
     removeTag
 }
 

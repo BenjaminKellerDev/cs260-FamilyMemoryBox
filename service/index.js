@@ -11,9 +11,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 
 
-let tags = [];
 let stories = [];
-let users = [];
 
 
 
@@ -117,7 +115,8 @@ apiRouter.delete('/tags', authCheck, async (req, res) => {
 });
 
 apiRouter.get('/stories', authCheck, async (req, res) => {
-    res.send(stories);
+    const storyList = await DB.getStories();
+    res.send(storyList);
 });
 
 apiRouter.post('/stories', authCheck, async (req, res) => {
