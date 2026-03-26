@@ -64,8 +64,9 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = await DB.findUserByAttribute('nameText', req.body.nameText);
     if (user) {
         if (await bcrypt.compare(req.body.passwordText, user.password)) {
-            user.token = uuid.v4();
-            setAuthCookie(res, user.token);
+            const token = uuid.v4();
+            await DB.updateCookie(user.nameText, token);
+            setAuthCookie(res, token);
             res.send({ nameText: req.body.nameText });
             return;
         }

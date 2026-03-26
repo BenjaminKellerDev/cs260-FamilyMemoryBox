@@ -8,6 +8,8 @@ const usersCollection = db.collection('users');
 const tagCollection = db.collection('tags');
 const storiesCollection = db.collection('stories');
 
+const authCookieName = 'token';
+
 //connection test from simon
 (async function testConnection() {
     try {
@@ -63,6 +65,10 @@ async function addUser(user) {
     await usersCollection.insertOne(user);
 }
 
+async function updateCookie(username, token) {
+    await usersCollection.findOneAndUpdate({ 'nameText': username }, { $set: { [authCookieName]: token } })
+}
+
 async function addTag(tag) {
     return await tagCollection.findOneAndUpdate({ tagList: 'tagList' }, { $addToSet: { list: tag } }, { returnDocument: "after" });
 }
@@ -87,7 +93,7 @@ async function postStory(story) {
 module.exports = {
     findUserByAttribute,
     findStoryByUUID,
-    addUser,
+    addUser, updateCookie,
     addTag, getTags, removeTag,
     getStories, postStory
 }
