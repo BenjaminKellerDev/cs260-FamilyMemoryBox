@@ -1,7 +1,11 @@
 const { WebSocketServer } = require('ws');
 
 
-export function newPostBroadcaster(app) {
+function newPostBroadcaster(app) {
 
     const socketServer = new WebSocketServer({ server: app });
+}
+
+module.exports = {
+    newPostBroadcaster
 }
