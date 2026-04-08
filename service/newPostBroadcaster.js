@@ -7,6 +7,7 @@ function newPostBroadcaster(app) {
 
     socketServer.on('connection', (socket) => {
         socket.isAlive = true;
+        socket.on('pong', () => { socket.isAlive = true; })
 
         socket.on('message', function message() {
             socketServer.clients.forEach((client) => {
@@ -16,7 +17,7 @@ function newPostBroadcaster(app) {
 
             });
         });
-    })
+    });
 }
 
 module.exports = {
