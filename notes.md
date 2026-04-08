@@ -89,3 +89,6 @@ Had a hard time debugging my first endpoint. Eventually I remembered that the or
 
 ## DB Deliverable 
 Went way easier than I expected. There were a few times where a function returned a promise instead of a value, but debugging really helped with that. I'm still not sure how much database logic (like checking for preexisting users with the same name) to put int index.js or database.js, but for the most part, I kept database.js to one line. 
+
+## Websocket  
+Went really smoothly. Once I realized how the ws package worked by looking at simon-websocket, it was easy to get it going since I had designed it with a drop in replacement. had a bit of trouble passing the right objects to the singleton-like websocket manager, I kinda got it working, but I didn't like where it was heading so I asked AI for some tips on react best practices and it suggested passing the object thu, and instantiating it in the page with a arrow function as a parameter. That worked, but I wanted to make it singleton-like again. That is when I realized what simon-websocket was doing with handlers and so that was a cool moment. I was able to quickly add that and it worked like a charm!
