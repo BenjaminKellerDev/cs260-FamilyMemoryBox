@@ -18,7 +18,6 @@ export function Stories({ currentUser }) {
 
 
     async function refreshPosts() {
-        await addRandomStoryToDB();
         await getStoriesFromDB()
             .then(setStories)
             .catch(err => setErrorMSG(err.message));

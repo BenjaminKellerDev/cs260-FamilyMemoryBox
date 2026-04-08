@@ -3,6 +3,7 @@ import '../tags/tags.css';
 import { useNavigate } from 'react-router-dom';
 
 import { getTagsFromDatabase, addNewStoryToDB } from '../database'
+import { notificationSystem } from '../notification'
 
 export function Drafting({ currentUser }) {
     const navigate = useNavigate();
@@ -40,6 +41,7 @@ export function Drafting({ currentUser }) {
             storyOBJ.story = story;
             storyOBJ.comments = [];
             await addNewStoryToDB(storyOBJ);
+            notificationSystem.sendUpdateNotification();
             navigate('/stories');
         }
     }
