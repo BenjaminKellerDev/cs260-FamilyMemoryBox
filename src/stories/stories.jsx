@@ -8,6 +8,7 @@ import { notificationSystem } from '../notification'
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
     const [errorMSG, setErrorMSG] = React.useState('');
+    const [showSpinner, setSpinner] = React.useState(false);
 
     const [stories, setStories] = React.useState([]);
     React.useEffect(() => {
@@ -18,8 +19,10 @@ export function Stories({ currentUser }) {
 
 
     async function refreshPosts() {
+        setSpinner(true);
         await getStoriesFromDB()
             .then(setStories)
+            .then(setSpinner(false))
             .catch(err => setErrorMSG(err.message));
     }
 
@@ -29,7 +32,7 @@ export function Stories({ currentUser }) {
                 <form action="drafting">
                     <button type="submit" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); navigate('../drafting'); }}>New Story</button>
                 </form>
-                <Popup refreshPosts={refreshPosts} />
+                <Popup refreshPosts={refreshPosts} showSpinner={showSpinner} />
             </div>}
             {stories && stories.toReversed().map((obj) => <Story key={obj.uuid} storyOBJ={obj} />)}
             <div className='errorMSG'> {errorMSG}</div>

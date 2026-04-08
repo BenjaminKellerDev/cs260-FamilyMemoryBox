@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { notificationSystem } from '../notification'
-export function Popup({ refreshPosts }) {
+export function Popup({ refreshPosts, showSpinner }) {
     //websocket
 
     const [messageCount, updateCount] = React.useState(0);
@@ -14,9 +14,11 @@ export function Popup({ refreshPosts }) {
             setNSN(true);
     }, [messageCount])
 
-    return (<button className="btn btn-primary" onClick={() => {
+    return (<div><button className="btn btn-primary" onClick={() => {
         refreshPosts();
         setNSN(false);
-    }} style={{ display: newStoriesNotification ? 'inline-block' : 'none' }}>New Posts! refresh now</button>);
+    }} style={{ display: newStoriesNotification ? 'inline-block' : 'none' }}>New Posts! refresh now</button>
+        <img style={{ display: showSpinner ? 'inline-block' : 'none' }} src='https://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif'></img>
+    </div>);
 
 } 
