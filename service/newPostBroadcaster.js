@@ -17,7 +17,7 @@ function newPostBroadcaster(app) {
 
             });
         });
-    });
+    })
 }
 
 module.exports = {
