@@ -4,9 +4,11 @@ import { notificationSystem } from '../notification'
 export function Popup({ refreshPosts }) {
     //websocket
 
+
     const [newStoriesNotification, setNSN] = React.useState(false);
     React.useEffect(() => {
-        setNSN(true);
+        if (notificationSystem.messages.length > 0)
+            setNSN(true);
     }, [notificationSystem.messages])
 
     return (<button className="btn btn-primary" onClick={() => {

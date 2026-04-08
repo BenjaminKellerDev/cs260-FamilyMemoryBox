@@ -8,7 +8,7 @@ class NotificationSystem {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         this.socket.onmessage = async (message) => {
-            this.messages.push(JSON.parse(await message.data.text()));
+            this.messages.push(await message.data);
         }
     }
 }
