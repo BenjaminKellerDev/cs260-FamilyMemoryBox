@@ -7,7 +7,6 @@ import { Popup } from './popup'
 import { notificationSystem } from '../notification'
 export function Stories({ currentUser }) {
     const navigate = useNavigate();
-
     const [errorMSG, setErrorMSG] = React.useState('');
 
     const [stories, setStories] = React.useState([]);
