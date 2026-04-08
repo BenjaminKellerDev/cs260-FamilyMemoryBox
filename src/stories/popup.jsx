@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { notificationSystem } from '../notification'
 export function Popup({ refreshPosts }) {
     //websocket
     const [newStoriesNotification, setNSN] = React.useState(false);
