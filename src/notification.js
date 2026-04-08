@@ -19,6 +19,10 @@ class NotificationSystem {
         this.handlers.push(handel);
     }
 
+    sendUpdateNotification() {
+        this.socket.send('new content, update pls');
+    }
+
 
 }
 const notificationSystem = new NotificationSystem();
