@@ -1,15 +1,19 @@
 import React from 'react';
 
-import { notificationSystem } from '../notification'
+import { NotificationSystem } from '../notification'
 export function Popup({ refreshPosts }) {
     //websocket
 
+    const [messageCount, updateCount] = React.useState(0);
+    const notificationSystem = new NotificationSystem(() => {
+        updateCount(messageCount + 1);
+    });
 
     const [newStoriesNotification, setNSN] = React.useState(false);
     React.useEffect(() => {
-        if (notificationSystem.messages.length > 0)
+        if (messageCount > 0)
             setNSN(true);
-    }, [notificationSystem.messages])
+    }, [messageCount])
 
     return (<button className="btn btn-primary" onClick={() => {
         refreshPosts();
