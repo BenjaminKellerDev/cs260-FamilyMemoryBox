@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { newPostBroadcaster } = require('./newPostBroadcaster.js');
 
 const authCookieName = 'token';
 
@@ -226,3 +227,5 @@ app.use((_req, res) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+newPostBroadcaster(app)
