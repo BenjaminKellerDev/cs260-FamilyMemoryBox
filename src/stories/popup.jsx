@@ -3,12 +3,11 @@ import React from 'react';
 import { notificationSystem } from '../notification'
 export function Popup({ refreshPosts }) {
     //websocket
+
     const [newStoriesNotification, setNSN] = React.useState(false);
     React.useEffect(() => {
-        setInterval(() => {
-            setNSN(true);
-        }, 3000);
-    }, [])
+        setNSN(true);
+    }, [notificationSystem.messages])
 
     return (<button className="btn btn-primary" onClick={() => {
         refreshPosts();
